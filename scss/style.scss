@@ -1,0 +1,282 @@
+/******* Black Gym Color Palette ********/
+$color-principal: #FFD700; // Amarillo intenso
+$color-fondo: #000000; // Negro puro
+$color-texto: #FFFFFF; // Blanco puro
+$color-secundario: #1C1C1C; // Gris oscuro
+$color-amarillo-suave: #FFEA70; // Amarillo dorado claro
+$color-exito: #28A745; // Verde éxito
+$color-alerta: #DC3545; // Rojo alerta
+
+/******* Bootstrap Theming ********/
+$primary: $color-principal;
+$secondary: $color-secundario;
+$success: $color-exito;
+$danger: $color-alerta;
+$warning: $color-amarillo-suave;
+$light: $color-texto;
+$dark: $color-fondo;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "danger": $danger,
+    "warning": $warning,
+    "light": $light,
+    "dark": $dark,
+);
+
+$font-family-sans-serif: 'Montserrat', sans-serif;
+$headings-font-family: 'Oswald', sans-serif;
+$body-bg: $color-fondo;
+$body-color: $color-texto;
+$headings-color: $color-texto;
+$btn-border-width: 2px;
+$enable-responsive-font-sizes: true;
+$enable-rounded: false;
+$enable-shadows: false;
+
+@import "https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald&display=swap";
+@import "bootstrap/scss/bootstrap";
+
+/********** Custom CSS ************/
+[class^="flaticon-"],
+[class*=" flaticon-"] {
+    color: $color-principal;
+}
+
+body {
+    background: $color-fondo;
+    color: $color-texto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-texto;
+}
+
+a, .nav-link {
+    color: $color-principal;
+    &:hover, &.active {
+        color: $color-amarillo-suave;
+    }
+}
+
+.btn-primary, .btn.btn-primary {
+    background: $color-principal;
+    color: $color-fondo;
+    border-color: $color-principal;
+    &:hover, &:focus {
+        background: $color-amarillo-suave;
+        color: $color-fondo;
+        border-color: $color-amarillo-suave;
+    }
+}
+
+.btn-secondary, .btn.btn-secondary {
+    background: $color-secundario;
+    color: $color-texto;
+    border-color: $color-secundario;
+    &:hover, &:focus {
+        background: $color-principal;
+        color: $color-fondo;
+        border-color: $color-principal;
+    }
+}
+
+.btn-success {
+    background: $color-exito;
+    border-color: $color-exito;
+}
+
+.btn-danger {
+    background: $color-alerta;
+    border-color: $color-alerta;
+}
+
+.card, .team .card {
+    background: $color-secundario;
+    color: $color-texto;
+    border: 2px solid $color-principal;
+}
+
+.page-header, .subscribe, .footer {
+    background: $color-secundario;
+    color: $color-texto;
+}
+
+.container-fluid.nav-bar {
+    position: absolute;
+    z-index: 9;
+    background: transparent;
+}
+@media (max-width: 991.98px) {
+    .container-fluid.nav-bar {
+        position: relative;
+        background: $color-secundario;
+    }
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: $color-texto;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: $color-principal;
+}
+
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1;
+}
+
+.gym-class {
+    position: relative;
+    margin-top: 90px;
+}
+.gym-class .gym-class-box {
+    min-height: 450px;
+    background: $color-secundario;
+    color: $color-texto;
+    border: 2px solid $color-principal;
+}
+@media (min-width: 992px) {
+    .gym-class {
+        margin-top: -90px;
+        z-index: 1;
+    }
+}
+.gym-class i {
+    position: absolute;
+    font-size: 200px;
+    line-height: 200px;
+    bottom: 0;
+    color: $color-texto;
+    opacity: .1;
+}
+.gym-class .gym-class-box.text-right i {
+    left: 0;
+}
+.gym-class .gym-class-box.text-left i {
+    right: 0;
+}
+
+.feature i {
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    color: $color-fondo;
+    background: $color-principal;
+}
+
+@media (max-width: 767.98px) {
+    .bmi {
+      background: $color-secundario;
+    }
+}
+@media (min-width: 768px) {
+    .bmi::after {
+      position: absolute;
+      content: "";
+      width: 50%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../img/carousel-1.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: -1;
+    }
+}
+
+.team .card-social {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    transition: .5s;
+    z-index: 1;
+}
+.team .card:hover .card-social {
+    top: 0;
+    height: calc(100% - 100px);
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+}
+.team .card-body {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 767.98px) {
+    .testimonial {
+      background: $color-secundario;
+    }
+}
+@media (min-width: 768px) {
+    .testimonial::after {
+      position: absolute;
+      content: "";
+      width: 50%;
+      height: 100%;
+      top: 0;
+      right: 0;
+      background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../img/carousel-2.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: -1;
+    }
+}
+
+.testimonial-text::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: -20px;
+    left: 30px;
+    border: 10px solid;
+    border-color: transparent transparent $color-secundario transparent;
+    z-index: 2;
+}
+.testimonial-text::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    top: -24px;
+    left: 28px;
+    border: 12px solid;
+    border-color: transparent transparent $color-fondo transparent;
+    z-index: 1;
+}
+
+.contact-form .help-block ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.page-header,
+.subscribe,
+.footer {
+  background: $color-secundario;
+  color: $color-texto;
+}
