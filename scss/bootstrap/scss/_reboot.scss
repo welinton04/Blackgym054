@@ -359,6 +359,7 @@ button,
 [type="button"], // 1
 [type="reset"],
 [type="submit"] {
+  appearance: button;
   -webkit-appearance: button; // 2
 }
 
@@ -439,6 +440,7 @@ progress {
   // be added to `.form-control` as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
   outline-offset: -2px; // 2. Correct the outline style in Safari.
+  appearance: none;
   -webkit-appearance: none;
 }
 
@@ -447,6 +449,7 @@ progress {
 //
 
 [type="search"]::-webkit-search-decoration {
+  appearance: none;
   -webkit-appearance: none;
 }
 
@@ -457,6 +460,7 @@ progress {
 
 ::-webkit-file-upload-button {
   font: inherit; // 2
+  appearance: button;
   -webkit-appearance: button; // 1
 }
 

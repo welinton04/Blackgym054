@@ -8,44 +8,21 @@
     <meta content="Plantilla Web Gratis" name="keywords">
     <meta content="Plantilla Web Gratis" name="description">
 
-    <!-- Icono de la página -->
+    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
-    <!-- Iconos Font Awesome -->
+    <!-- Font Awesome 6.4.0 para iconos modernos (incluye TikTok) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Fuente Flaticon -->
+    <!-- Flaticon Font -->
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
 
-    <!-- Hoja de estilos personalizada Bootstrap -->
+    <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-white">
-    <!-- Ícono del carrito flotante -->
-    <div id="carrito-flotante" style="position:fixed;top:32px;right:32px;z-index:9999;">
-        <button id="btn-carrito" style="background:#181818;border-radius:50%;width:62px;height:62px;box-shadow:0 6px 24px #FFD70055;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:box-shadow 0.3s;">
-            <i class="fa fa-shopping-cart" style="font-size:2.3rem;color:#FFD700;"></i>
-            <span id="carrito-cantidad" style="position:absolute;top:7px;right:7px;background:#FFD700;color:#181818;font-weight:bold;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:1.08rem;box-shadow:0 2px 8px #FFD70099;">0</span>
-        </button>
-    </div>
-    <!-- Panel flotante del carrito -->
-    <div id="panel-carrito" style="display:none;position:fixed;top:90px;right:32px;width:370px;max-width:98vw;background:#fffbe8;border-radius:22px;box-shadow:0 12px 48px #FFD70055;padding:1.6rem 1.2rem 1.2rem 1.2rem;z-index:9998;animation:fadeInCarrito 0.5s;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-            <h4 style="color:#181818;font-weight:bold;margin:0;font-size:1.35rem;">Mi Carrito</h4>
-            <button id="cerrar-carrito" style="background:#FFD700;color:#181818;border-radius:50%;width:32px;height:32px;font-weight:bold;border:none;font-size:1.2rem;box-shadow:0 2px 8px #FFD70099;">&times;</button>
-        </div>
-        <div id="carrito-lista" style="max-height:320px;overflow-y:auto;margin-bottom:1rem;"></div>
-        <div id="carrito-total" style="color:#181818;font-weight:bold;font-size:1.15rem;text-align:right;margin-bottom:0.7rem;"></div>
-        <button id="vaciar-carrito" style="background:#181818;color:#FFD700;border-radius:8px;padding:0.5rem 1.2rem;font-weight:bold;border:none;float:right;">Vaciar carrito</button>
-    </div>
-    <style>
-    @keyframes fadeInCarrito { from { opacity:0; transform:translateY(40px);} to { opacity:1; transform:translateY(0);} }
-    #carrito-flotante button:hover { box-shadow:0 12px 48px #FFD70099; }
-    #panel-carrito::-webkit-scrollbar { width: 8px; background: #FFD70022; }
-    #panel-carrito::-webkit-scrollbar-thumb { background: #FFD70099; border-radius: 8px; }
-    </style>
-    <!-- Inicio de la barra de navegación -->
+    <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="" class="navbar-brand">
@@ -64,7 +41,6 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
                         <div class="dropdown-menu text-capitalize">
                             <a href="blog.html" class="dropdown-item">Blog</a>
-                            <a href="single.html" class="dropdown-item">Detalle del Blog</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contacto</a>
@@ -72,9 +48,9 @@
             </div>
         </nav>
     </div>
-    <!-- Fin de la barra de navegación -->
+    <!-- Navbar End -->
 
-    <!-- Inicio del carrusel -->
+    <!-- Carousel Start -->
     <div class="container-fluid p-0">
         <div id="blog-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -103,10 +79,10 @@
             </a>
         </div>
     </div>
-    <!-- Fin del carrusel -->
+    <!-- Carousel End -->
 
 
-    <!-- Inicio sección Clases de Gimnasio -->
+    <!-- Gym Class Start -->
     <div class="container gym-class mb-5">
         <div class="row px-3">
             <div class="col-md-6 p-0">
@@ -131,359 +107,246 @@
             </div>
         </div>
     </div>
-    <!-- Fin sección Clases de Gimnasio -->
+    <!-- Gym Class End -->
 
 
-    <!-- Inicio sección Sobre Nosotros -->
+    <!-- About Start -->
     <div class="container py-5">
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <img class="img-fluid mb-4 mb-lg-0" src="img/about.jpg" alt="Imagen">
             </div>
-            <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
-                <h2 class="display-4 font-weight-bold mb-2" style="color:#FFD700; text-shadow:0 2px 8px #00000022;">10 Años de Experiencia</h2>
-                <p class="mb-4" style="color:#181818; text-shadow:0 1px 4px #00000022; font-size:1.18rem;">Contamos con una década de experiencia ayudando a nuestros clientes a alcanzar sus metas de salud y bienestar.</p>
-                <div class="d-flex flex-row w-100 justify-content-center mb-3">
-                    <div class="benefit-card text-center mx-2" style="max-width:370px; background:#fffbe8;border-radius:18px;border:1.5px solid #FFD70033;box-shadow:0 4px 18px #FFD70022;padding:1.5rem 1rem;">
-                        <i class="flaticon-barbell" style="font-size:4.5rem; color:#FFD700; margin-bottom:0.7rem;"></i>
-                        <h4 class="font-weight-bold mb-2 benefit-title" style="color:#FFD700; text-shadow:0 1px 4px #00000022; font-size:1.35rem;">Centro GYM Certificado</h4>
-                        <p class="benefit-text" style="color:#181818; text-shadow:0 1px 4px #00000022; font-size:1.08rem;">Instalaciones modernas y personal calificado para tu seguridad y comodidad.</p>
+            <div class="col-lg-6">
+                <h2 class="display-4 font-weight-bold mb-4" style="color:#181818;">3 Años de Experiencia</h2>
+                <p style="color:#181818; font-size:1.08rem;">Contamos con tres años de experiencia ayudando a nuestros clientes a alcanzar sus metas de salud y bienestar.</p>
+                <div class="row py-2">
+                    <div class="col-sm-6">
+                        <i class="flaticon-barbell display-2 text-primary"></i>
+                        <h4 class="font-weight-bold" style="color:#FFD700;">Centro GYM Certificado</h4>
+                        <p style="color:#181818; font-size:1.08rem;">Instalaciones modernas y personal calificado para tu seguridad y comodidad.</p>
                     </div>
-                    <div class="benefit-card text-center mx-2" style="max-width:370px; background:#fffbe8;border-radius:18px;border:1.5px solid #FFD70033;box-shadow:0 4px 18px #FFD70022;padding:1.5rem 1rem;">
-                        <i class="flaticon-medal" style="font-size:4.5rem; color:#FFD700; margin-bottom:0.7rem;"></i>
-                        <h4 class="font-weight-bold mb-2 benefit-title" style="color:#FFD700; text-shadow:0 1px 4px #00000022; font-size:1.35rem;">Premios y Reconocimientos</h4>
-                        <p class="benefit-text" style="color:#181818; text-shadow:0 1px 4px #00000022; font-size:1.08rem;">Reconocidos por la excelencia en el servicio y resultados de nuestros clientes.</p>
+                    <div class="col-sm-6">
+                        <i class="flaticon-medal display-2 text-primary"></i>
+                        <h4 class="font-weight-bold" style="color:#FFD700;">Premios y Reconocimientos</h4>
+                        <p style="color:#181818; font-size:1.08rem;">Reconocidos por la excelencia en el servicio y resultados de nuestros clientes.</p>
                     </div>
                 </div>
-                <a href="" class="btn btn-lg px-4 mt-2" style="background:#181818; color:#FFD700; font-weight:bold; border-radius:8px; border:2px solid #FFD700;">Saber Más</a>
+                <a href="" class="btn btn-lg px-4 btn-outline-primary">Saber Más</a>
             </div>
         </div>
     </div>
-    <!-- Fin sección Sobre Nosotros -->
+    <!-- About End -->
 
-
-    <!-- Inicio sección Tienda -->
-    <div class="container tienda my-5">
-        <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">Tienda</h4>
-            <h4 class="display-4 font-weight-bold">Productos para tu entrenamiento</h4>
-            <p class="mb-3" style="font-size:1.18rem; color:#181818;">Encuentra suplementos, ropa deportiva y accesorios para potenciar tu experiencia en el gimnasio.</p>
-        </div>
-        <div class="row" id="panel-productos">
-            <!-- Ejemplo de producto, puedes duplicar este bloque para más productos -->
-            <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="card shadow-sm producto-card" style="max-width:340px; border-radius:18px;">
-                    <img src="img/productos/proteina.jpg" alt="Proteína" class="card-img-top" style="height:220px; object-fit:contain; border-radius:18px 18px 0 0; background:#f8f8f8; display:block; margin:auto;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold" style="color:#FFD700;">Proteína Whey</h5>
-                        <p class="card-text" style="color:#181818;">Suplemento para recuperación y desarrollo muscular. Sabor vainilla.</p>
-                        <span class="badge badge-success" style="font-size:1.1rem;">RD$ 1,200</span>
-                        <button class="btn btn-dark mt-3 agregar-carrito" style="color:#FFD700; border-radius:8px;">Agregar al carrito</button>
+    <!-- Features Start -->
+    <div class="container-fluid my-5">
+        <div class="row">
+            <div class="col-lg-4 p-0">
+                <div class="d-flex align-items-center bg-secondary text-white px-5" style="min-height: 300px;">
+                    <i class="flaticon-training display-3 text-primary mr-3"></i>
+                    <div class="">
+                        <h2 class="text-white mb-3">Progresión</h2>
+                        <p>Avanza a tu ritmo con planes personalizados y seguimiento profesional.</p>
                     </div>
                 </div>
             </div>
-            <!-- Producto agregado por el usuario -->
-            <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="card shadow-sm producto-card" style="max-width:340px; border-radius:18px;">
-                    <img src="img/productos/super Mass Gainer.png" alt="Super Mass Gainer" class="card-img-top" style="height:220px; object-fit:contain; border-radius:18px 18px 0 0; background:#f8f8f8; display:block; margin:auto;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold" style="color:#FFD700;">Super Mass Gainer</h5>
-                        <p class="card-text" style="color:#181818;">Proteína de alto rendimiento para ganar masa muscular rápidamente. Ideal para atletas y personas con alto desgaste físico.</p>
-                        <span class="badge badge-success" style="font-size:1.1rem;">RD$ 2,100</span>
-                        <button class="btn btn-dark mt-3 agregar-carrito" style="color:#FFD700; border-radius:8px;">Agregar al carrito</button>
+            <div class="col-lg-4 p-0">
+                <div class="d-flex align-items-center bg-primary text-white px-5" style="min-height: 300px;">
+                    <i class="flaticon-weightlifting display-3 text-secondary mr-3"></i>
+                    <div class="">
+                        <h2 class="text-white mb-3">Entrenamiento</h2>
+                        <p>Entrenadores expertos y rutinas adaptadas a tus objetivos.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="card shadow-sm producto-card" style="max-width:340px; border-radius:18px;">
-                    <img src="img/productos/ropa-gym.jpg" alt="Ropa de Gym" class="card-img-top" style="height:220px; object-fit:contain; border-radius:18px 18px 0 0; background:#f8f8f8; display:block; margin:auto;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold" style="color:#FFD700;">Camiseta Deportiva</h5>
-                        <p class="card-text" style="color:#181818;">Material transpirable y cómodo para tus entrenamientos.</p>
-                        <span class="badge badge-success" style="font-size:1.1rem;">RD$ 650</span>
-                        <button class="btn btn-dark mt-3" style="color:#FFD700; border-radius:8px;">Agregar al carrito</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="card shadow-sm producto-card" style="max-width:340px; border-radius:18px;">
-                    <img src="img/productos/shaker.jpg" alt="Shaker" class="card-img-top" style="height:220px; object-fit:contain; border-radius:18px 18px 0 0; background:#f8f8f8; display:block; margin:auto;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title font-weight-bold" style="color:#FFD700;">Shaker</h5>
-                        <p class="card-text" style="color:#181818;">Mezclador para tus batidos y suplementos.</p>
-                        <span class="badge badge-success" style="font-size:1.1rem;">RD$ 350</span>
-                        <button class="btn btn-dark mt-3" style="color:#FFD700; border-radius:8px;">Agregar al carrito</button>
+            <div class="col-lg-4 p-0">
+                <div class="d-flex align-items-center bg-secondary text-white px-5" style="min-height: 300px;">
+                    <i class="flaticon-treadmill display-3 text-primary mr-3"></i>
+                    <div class="">
+                        <h2 class="text-white mb-3">Nutrición</h2>
+                        <p>Asesoría nutricional para complementar tu entrenamiento y mejorar tus resultados.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Fin sección Tienda -->
-<script>
-// Carrito profesional con total y vaciar
-let carrito = [];
-function actualizarCarrito() {
-    const lista = document.getElementById('carrito-lista');
-    const cantidad = document.getElementById('carrito-cantidad');
-    const total = document.getElementById('carrito-total');
-    lista.innerHTML = '';
-    let suma = 0;
-    if (carrito.length === 0) {
-        lista.innerHTML = '<p style="color:#181818;text-align:center;">El carrito está vacío.</p>';
-        total.textContent = '';
-    } else {
-        carrito.forEach((prod, idx) => {
-            let precioNum = parseInt(prod.precio.replace(/[^\d]/g, ''));
-            suma += precioNum;
-            lista.innerHTML += `<div style='display:flex;align-items:center;justify-content:space-between;margin-bottom:0.7rem;background:#fff;border-radius:12px;padding:0.7rem 0.9rem;box-shadow:0 2px 8px #FFD70022;'>
-                <img src='${prod.img}' alt='${prod.nombre}' style='width:54px;height:54px;object-fit:contain;border-radius:10px;background:#f8f8f8;margin-right:0.9rem;'>
-                <div style='flex:1;'>
-                    <span style='font-weight:bold;color:#FFD700;font-size:1.08rem;'>${prod.nombre}</span><br>
-                    <span style='color:#181818;font-size:1.05rem;'>${prod.precio}</span>
-                </div>
-                <button onclick='eliminarDelCarrito(${idx})' style='background:#FFD700;color:#181818;border:none;border-radius:8px;padding:0.4rem 0.9rem;font-weight:bold;cursor:pointer;box-shadow:0 2px 8px #FFD70099;'>Eliminar</button>
-            </div>`;
-        });
-        total.textContent = 'Total: RD$ ' + suma.toLocaleString('es-DO');
-    }
-    cantidad.textContent = carrito.length;
-}
-function agregarAlCarrito(nombre, precio, img) {
-    carrito.push({nombre, precio, img});
-    actualizarCarrito();
-}
-function eliminarDelCarrito(idx) {
-    carrito.splice(idx, 1);
-    actualizarCarrito();
-}
-document.getElementById('btn-carrito').onclick = function() {
-    document.getElementById('panel-carrito').style.display = 'block';
-}
-document.getElementById('cerrar-carrito').onclick = function() {
-    document.getElementById('panel-carrito').style.display = 'none';
-}
-document.getElementById('vaciar-carrito').onclick = function() {
-    carrito = [];
-    actualizarCarrito();
-}
-// Activar los botones de "Agregar al carrito" en la tienda
-document.querySelectorAll('.producto-card .agregar-carrito').forEach(btn => {
-    btn.onclick = function() {
-        const card = btn.closest('.producto-card');
-        const nombre = card.querySelector('.card-title').textContent.trim();
-        const precio = card.querySelector('.badge-success').textContent.trim();
-        const img = card.querySelector('img').getAttribute('src');
-        agregarAlCarrito(nombre, precio, img);
-        // Animación visual profesional
-        btn.textContent = 'Agregado!';
-        btn.style.background = '#FFD700';
-        btn.style.color = '#181818';
-        btn.style.transform = 'scale(1.08)';
-        setTimeout(() => {
-            btn.textContent = 'Agregar al carrito';
-            btn.style.background = '';
-            btn.style.color = '#FFD700';
-            btn.style.transform = '';
-        }, 1200);
-    }
-});
-actualizarCarrito();
-</script>
+    <!-- Features End -->
 
-
-    <!-- Inicio sección Beneficios del GYM -->
-    <div class="container feature pt-5" style="background:linear-gradient(120deg,#181818 80%,#FFD70022 100%);border-radius:30px;">
+    <!-- Tienda Panel (copiado de about.html, sin botón de carrito) -->
+    <div class="container tienda my-5" id="tienda">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">¿Por qué elegirnos?</h4>
-            <h4 class="display-4 font-weight-bold">Beneficios de Unirte a Nuestro GYM</h4>
+            <h4 class="text-primary font-weight-bold" style="font-size:2.1rem;letter-spacing:1px;margin-bottom:0.7rem;text-shadow:0 2px 12px #FFD70099;">Tienda</h4>
+            <h2 class="display-4 font-weight-bold" style="color:#181818;letter-spacing:2px;text-shadow:0 2px 12px #FFD70099,0 0px 0px #fff;">Productos para tu entrenamiento</h2>
+            <p class="mb-3" style="font-size:1.28rem; color:#181818; background:linear-gradient(90deg,#FFD70022 0%,#fffbe8 100%); border-radius:16px; padding:1rem 1.7rem; box-shadow:0 4px 24px #FFD70033; display:inline-block; margin-top:0.7rem; border:2px solid #FFD70099; font-weight:500; letter-spacing:1px; animation:fadeInTitulo 1.2s;">Encuentra suplementos, ropa deportiva, vitaminas y accesorios para potenciar tu experiencia en el gimnasio.</p>
         </div>
-        <style>
-        /* Mejora visual para productos */
-        .producto-card {
+        <div class="row" id="panel-productos-inicio">
+            <!-- Productos destacados dinámicos -->
+        </div>
+        <script>
+        // Animaciones y estilos modernos para la tienda de inicio
+        const estiloTiendaInicio = document.createElement('style');
+        estiloTiendaInicio.innerHTML = `
+        .producto-card-inicio {
+            border: 2px solid #FFD700;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 6px 32px #18181822, 0 2px 12px #FFD70055;
             transition: box-shadow 0.3s, transform 0.3s;
-        }
-        .producto-card:hover {
-            box-shadow: 0 12px 32px #FFD70055;
-            transform: scale(1.04);
-        }
-        .producto-card .card-title {
-            font-size: 1.25rem;
-            letter-spacing: 0.5px;
-        }
-        .producto-card .card-text {
-            font-size: 1.08rem;
-        }
-        .producto-card .badge-success {
-            background: #FFD700;
-            color: #181818;
-        }
-        .producto-card .agregar-carrito {
-            background: #181818;
-            color: #FFD700;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .producto-card .agregar-carrito:hover {
-            background: #FFD700;
-            color: #181818;
-        }
-        /* ...existing code... */
-        .container.feature.pt-5 {
-            background: linear-gradient(120deg,#181818 80%,#FFD70022 100%);
-            border-radius: 30px;
-            animation: bgMove 12s linear infinite alternate;
-        }
-        @keyframes bgMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 100%; }
-        }
-        .feature-card-img {
-            width: 200px !important;
-            height: 200px !important;
-            object-fit: cover !important;
-            border-radius: 50% !important;
-            box-shadow: 0 4px 16px #FFD70033 !important;
-            display: block !important;
-            margin: 0 auto 1.2rem auto !important;
-            transition: transform 0.4s, box-shadow 0.4s;
-        }
-        .feature-card-img:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 32px #FFD70066 !important;
-        }
-        .feature-card-icon {
-            font-size: 3.5rem !important;
-            color: #FFD700 !important;
-            margin-bottom: 1.2rem !important;
-            display: inline-flex !important;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(255,215,0,0.18);
-            box-shadow: 0 2px 8px #FFD70033;
-            transition: box-shadow 0.3s, background 0.3s;
-        }
-        .text-center.w-100.p-4 {
-            max-width: 400px;
-            min-width: 260px;
-            margin-left: auto;
-            margin-right: auto;
-            min-height: 420px;
+            animation: fadeInCard 0.9s cubic-bezier(.4,2,.3,1);
+            background: #fff;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #181818;
-            border-radius: 22px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-            padding: 2.2rem 1.2rem 1.2rem 1.2rem;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInCard 0.8s forwards;
-            transition: box-shadow 0.3s;
+            height: 100%;
         }
-        .text-center.w-100.p-4:hover {
-            box-shadow: 0 16px 48px #FFD70033;
+        .producto-card-inicio:hover {
+            box-shadow: 0 8px 32px #FFD70099, 0 2px 8px #18181822;
+            transform: scale(1.04) translateY(-4px);
         }
-        .text-center.w-100.p-4:hover .feature-card-icon {
-            background: #FFD700;
-            color: #181818 !important;
-            box-shadow: 0 4px 24px #FFD70099;
+        .producto-img-inicio {
+            height: 220px;
+            width: 100%;
+            object-fit: contain;
+            background: #fff center center no-repeat;
+            border-bottom: 2px solid #FFD700;
+            display: block;
+            padding: 18px 12px 12px 12px;
         }
-        .text-center.w-100.p-4:hover h4, .text-center.w-100.p-4:hover p {
-            color: #FFD700;
-        }
-        .text-center.w-100.p-4 h4, .text-center.w-100.p-4 p {
-            color: #fff;
-            text-shadow: 0 1px 4px #00000033;
-            transition: color 0.3s;
-        }
-        .text-center.w-100.p-4 h4 {
-            font-size: 1.6rem;
+        .producto-titulo-inicio {
+            font-size: 1.18rem;
             font-weight: bold;
-            margin-bottom: 0.7rem;
+            color: #181818;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
         }
-        .text-center.w-100.p-4 p {
+        .producto-precio-inicio {
             font-size: 1.13rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
         }
-        .row > [class*='col-'] {
-            margin-bottom: 2.2rem;
-            display: flex;
-            justify-content: center;
-        }
-        @media (max-width: 991px) {
-            .feature-card-img { width: 130px !important; height: 130px !important; }
-            .feature-card-icon { font-size: 2.2rem !important; width: 50px; height: 50px; }
-            .text-center.w-100.p-4 { min-height: 340px; }
-        }
-        @media (max-width: 767px) {
-            .feature-card-img { width: 90px !important; height: 90px !important; }
-            .feature-card-icon { font-size: 1.5rem !important; width: 38px; height: 38px; }
-            .text-center.w-100.p-4 { min-width: 90vw; max-width: 98vw; padding: 1.8rem 1.2rem 1.8rem 1.2rem !important; }
-            .row > [class*='col-'] { margin-bottom: 2.8rem; }
+        .producto-desc-inicio {
+            font-size: 1.01rem;
+            color: #444;
+            min-height: 48px;
+            margin-bottom: 0.5rem;
         }
         @keyframes fadeInCard {
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity:0; transform:scale(0.95); }
+            to { opacity:1; transform:scale(1); }
         }
-        </style>
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-5 mb-5 d-flex justify-content-center">
-                <div class="text-center w-100 p-4" style="background:#181818;border-radius:22px;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
-                    <img src="img/feature-1.jpg" alt="Imagen" class="feature-card-img">
-                    <span class="feature-card-icon"><i class="flaticon-barbell"></i></span>
-                    <h4 class="font-weight-bold" style="font-size:1.5rem;">Videos Instructivos</h4>
-                    <p style="font-size:1.08rem;">Acceso a una biblioteca de videos para mejorar tu técnica y motivación.</p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-5 mb-5 d-flex justify-content-center">
-                <div class="text-center w-100 p-4" style="background:#181818;border-radius:22px;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
-                    <img src="img/feature-2.jpg" alt="Imagen" class="feature-card-img">
-                    <span class="feature-card-icon"><i class="flaticon-training"></i></span>
-                    <h4 class="font-weight-bold" style="font-size:1.5rem;">Calendario de Entrenamiento</h4>
-                    <p style="font-size:1.08rem;">Organiza tus rutinas y sigue tu progreso con nuestro calendario interactivo.</p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-5 mb-5 d-flex justify-content-center">
-                <div class="text-center w-100 p-4" style="background:#181818;border-radius:22px;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
-                    <img src="img/feature-3.jpg" alt="Imagen" class="feature-card-img">
-                    <span class="feature-card-icon"><i class="flaticon-trends"></i></span>
-                    <h4 class="font-weight-bold" style="font-size:1.5rem;">Apps y WiFi Gratis</h4>
-                    <p style="font-size:1.08rem;">Disfruta de conectividad y herramientas digitales para potenciar tu entrenamiento.</p>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-5 mb-5 d-flex justify-content-center">
-                <div class="text-center w-100 p-4" style="background:#181818;border-radius:22px;box-shadow:0 8px 32px rgba(0,0,0,0.18);">
-                    <img src="img/feature-4.jpg" alt="Imagen" class="feature-card-img">
-                    <span class="feature-card-icon"><i class="flaticon-support"></i></span>
-                    <h4 class="font-weight-bold" style="font-size:1.5rem;">Soporte Comunitario</h4>
-                    <p style="font-size:1.08rem;">Únete a una comunidad activa que te apoyará en cada paso de tu transformación.</p>
-                </div>
-            </div>
-        </div>
+        /* Grid responsivo mejorado */
+        #panel-productos-inicio {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px 0;
+            justify-content: center;
+        }
+        #panel-productos-inicio > div {
+            display: flex;
+            flex: 1 1 320px;
+            min-width: 280px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        @media (min-width: 992px) {
+            #panel-productos-inicio > div {
+                max-width: 32%;
+            }
+        }
+        @media (max-width: 991px) and (min-width: 768px) {
+            #panel-productos-inicio > div {
+                max-width: 48%;
+            }
+        }
+        @media (max-width: 767px) {
+        /* Badge de promo */
+        .badge-promo-inicio {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(90deg,#FFD700 60%,#fffbe8 100%);
+            color: #181818;
+            font-weight: bold;
+            font-size: 0.98rem;
+            border-radius: 8px;
+            padding: 4px 12px;
+            box-shadow: 0 2px 8px #FFD70055;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+        /* Valoración estrellas */
+        .valoracion-inicio {
+            color: #FFD700;
+            font-size: 1.08rem;
+            margin-bottom: 0.2rem;
+        }
+        .reseñas-inicio {
+            color: #888;
+            font-size: 0.98rem;
+            margin-left: 4px;
+        }
+            #panel-productos-inicio > div {
+                max-width: 100%;
+                min-width: 90vw;
+            }
+        }
+        `;
+        document.head.appendChild(estiloTiendaInicio);
+
+        // Cargar productos desde productos.json y mostrar 6 aleatorios
+        fetch('productos.json')
+            .then(res => res.json())
+            .then(productos => {
+                const panel = document.getElementById('panel-productos-inicio');
+                // Seleccionar 6 productos aleatorios
+                const seleccionados = productos.sort(() => 0.5 - Math.random()).slice(0, 6);
+                panel.innerHTML = '';
+                seleccionados.forEach(prod => {
+                    // Badge promo
+                    let badgePromo = prod.promo ? `<span class="badge-promo-inicio">${prod.promo}</span>` : '';
+                    // Estrellas valoración
+                    let estrellas = '';
+                    let val = parseFloat(prod.valoracion || '4.8');
+                    for(let i=1;i<=5;i++) estrellas += `<i class='fa fa-star${val>=i?"":"-o"}'></i>`;
+                    // Reseñas
+                    let reseñas = prod.reseñas ? `<span class='reseñas-inicio'>(${prod.reseñas})</span>` : '';
+                    panel.innerHTML += `
+                    <div class="mb-4 px-3">
+                        <div class="producto-card-inicio w-100 h-100 position-relative">
+                            ${badgePromo}
+                            <img src="${prod.img}" alt="${prod.nombre}" class="producto-img-inicio">
+                            <div class="card-body text-center p-3 d-flex flex-column justify-content-between h-100">
+                                <div>
+                                    <div class="producto-titulo-inicio">${prod.nombre}</div>
+                                    <div class="producto-precio-inicio mb-2">${prod.precio}</div>
+                                    <div class="valoracion-inicio mb-1">${estrellas} ${reseñas}</div>
+                                    <div class="producto-desc-inicio">${prod.descripcion}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+            });
+        </script>
     </div>
-    <!-- Fin sección Beneficios del GYM -->
+    <!-- Fin Tienda Panel -->
 
-
-    <!-- Inicio sección Suscripción -->
+    <!-- Subscribe Start -->
     <div class="subscribe container-fluid my-5 py-5 text-center">
         <h4 class="display-4 text-white font-weight-bold mt-5 mb-3">Suscríbete a Nuestro Boletín</h4>
         <p class="text-white mb-4">Recibe nuestros últimos artículos y novedades en tu correo</p>
         <form class="form-inline justify-content-center mb-5">
             <div class="input-group">
-                <input type="text" class="form-control-lg" placeholder="Tu correo electrónico" id="newsletter-email" name="newsletter-email" autocomplete="email">
+                <input type="text" class="form-control-lg" placeholder="Tu correo electrónico" id="email" name="email" autocomplete="email">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="submit">Suscribirse</button>
                 </div>
             </div>
         </form>
     </div>
-    <!-- Fin sección Suscripción -->
+    <!-- Subscribe End -->
 
-
-    <!-- Inicio sección Horario de Clases -->
+    <!-- Class Timetable Start -->
     <div class="container gym-feature py-5">
         <div class="d-flex flex-column text-center mb-5">
             <h4 class="text-primary font-weight-bold">Horario de Clases</h4>
@@ -509,64 +372,58 @@ actualizarCarrito();
                     <div class="table-responsive">
                         <table class="table table-bordered table-lg m-0">
                             <thead class="bg-secondary text-white text-center">
-                            <tr>
-                            <th>Hora</th>
-                            <th>Lunes</th>
-                            <th>Martes</th>
-                            <th>Miércoles</th>
-                            <th>Jueves</th>
-                            <th>Viernes</th>
-                            </tr>
+                                <tr>
+                                    <th>Hora</th>
+                                    <th>Lunes</th>
+                                    <th>Martes</th>
+                                    <th>Miércoles</th>
+                                    <th>Jueves</th>
+                                    <th>Viernes</th>
+                                    <th>Sábado</th>
+                                    <th>Domingo</th>
+                                </tr>
                             </thead>
                             <tbody class="text-center">
-                            <tr>
-                            <th class="bg-secondary text-white align-middle">5:00am - 6:30am</th>
-                            <td><h5>Cardio</h5>Juan Pérez</td>
-                            <td><h5>Musculación</h5>Pedro Gómez</td>
-                            <td><h5>Crossfit</h5>Laura Díaz</td>
-                            <td><h5>Powerlifting</h5>James Alien</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            </tr>
-                            <tr>
-                            <th class="bg-secondary text-white align-middle">6:30am - 8:00am</th>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            <td><h5>Powerlifting</h5>James Alien</td>
-                            <td><h5>Musculación</h5>Pedro Gómez</td>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            </tr>
-                            <tr>
-                            <th class="bg-secondary text-white align-middle">8:00am - 10:30am</th>
-                            <td><h5>Powerlifting</h5>James Alien</td>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            <td><h5>Musculación</h5>Pedro Gómez</td>
-                            </tr>
-                            <tr>
-                            <th class="bg-secondary text-white align-middle">3:00pm - 5:00pm</th>
-                            <td><h5>Cardio</h5>Juan Pérez</td>
-                            <td><h5>Powerlifting</h5>James Alien</td>
-                            <td><h5>Musculación</h5>Pedro Gómez</td>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            </tr>
-                            <tr>
-                            <th class="bg-secondary text-white align-middle">5:00pm - 6:30pm</th>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            <td><h5>Powerlifting</h5>James Alien</td>
-                            <td><h5>Musculación</h5>Pedro Gómez</td>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            </tr>
-                            <tr>
-                            <th class="bg-secondary text-white align-middle">6:30pm - 8:30pm</th>
-                            <td><h5>Powerlifting</h5>James Alien</td>
-                            <td><h5>Crossfit</h5>Adam Phillips</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            <td><h5>Cardio</h5>John Deo</td>
-                            <td><h5>Musculación</h5>Pedro Gómez</td>
-                            </tr>
+                                <tr>
+                                    <th class="bg-secondary text-white align-middle">6:00am - 8:00am</th>
+                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                    <td><h5>Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                    <td><h5>Cardio</h5>John Deo</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary text-white align-middle">10:00am - 12:00pm</th>
+                                    <td></td>
+                                    <td><h5>Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary text-white align-middle">5:00pm - 7:00pm</th>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                    <td><h5>Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary text-white align-middle">7:00pm - 9:00pm</th>
+                                    <td></td>
+                                    <td><h5>Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                    <td><h5>Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -582,6 +439,8 @@ actualizarCarrito();
                                     <th>Miércoles</th>
                                     <th>Jueves</th>
                                     <th>Viernes</th>
+                                    <th>Sábado</th>
+                                    <th>Domingo</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -592,6 +451,8 @@ actualizarCarrito();
                                     <td><h5>Crossfit</h5>Adam Phillips</td>
                                     <td></td>
                                     <td><h5>Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                    <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10:00am - 12:00pm</th>
@@ -600,6 +461,8 @@ actualizarCarrito();
                                     <td></td>
                                     <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
                                     <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td> 
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5:00pm - 7:00pm</th>
@@ -608,6 +471,8 @@ actualizarCarrito();
                                     <td><h5>Powerlifting</h5>James Alien</td>
                                     <td></td>
                                     <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7:00pm - 9:00pm</th>
@@ -615,6 +480,8 @@ actualizarCarrito();
                                     <td class="bg-primary text-white"><h5 class="text-white">Cardio</h5>John Deo</td>
                                     <td></td>
                                     <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                    <td><h5>Powerlifting</h5>James Alien</td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -632,6 +499,8 @@ actualizarCarrito();
                                     <th>Miércoles</th>
                                     <th>Jueves</th>
                                     <th>Viernes</th>
+                                    <th>Sábado</th>
+                                    <th>Domingo</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -642,6 +511,8 @@ actualizarCarrito();
                                     <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
                                     <td></td>
                                     <td><h5>Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                    <td><h5>Cardio</h5>John Deo</td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10:00am - 12:00pm</th>
@@ -650,6 +521,8 @@ actualizarCarrito();
                                     <td></td>
                                     <td><h5>Cardio</h5>John Deo</td>
                                     <td></td>
+                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
+                                    <td></td> 
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5:00pm - 7:00pm</th>
@@ -658,6 +531,8 @@ actualizarCarrito();
                                     <td><h5>Powerlifting</h5>James Alien</td>
                                     <td></td>
                                     <td><h5>Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7:00pm - 9:00pm</th>
@@ -665,6 +540,8 @@ actualizarCarrito();
                                     <td><h5>Cardio</h5>John Deo</td>
                                     <td></td>
                                     <td class="bg-primary text-white"><h5 class="text-white">Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                    <td><h5>Powerlifting</h5>James Alien</td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -682,6 +559,8 @@ actualizarCarrito();
                                     <th>Miércoles</th>
                                     <th>Jueves</th>
                                     <th>Viernes</th>
+                                    <th>Sábado</th>
+                                    <th>Domingo</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -692,6 +571,8 @@ actualizarCarrito();
                                     <td><h5>Crossfit</h5>Adam Phillips</td>
                                     <td></td>
                                     <td class="bg-primary text-white"><h5 class="text-white">Powerlifting</h5>James Alien</td>
+                                    <td></td>
+                                    <td><h5>Cardio</h5>John Deo</td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">10:00am - 12:00pm</th>
@@ -700,6 +581,8 @@ actualizarCarrito();
                                     <td></td>
                                     <td><h5>Cardio</h5>John Deo</td>
                                     <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td> 
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">5:00pm - 7:00pm</th>
@@ -708,6 +591,8 @@ actualizarCarrito();
                                     <td class="bg-primary text-white"><h5 class="text-white">Powerlifting</h5>James Alien</td>
                                     <td></td>
                                     <td><h5>Cardio</h5>John Deo</td>
+                                    <td></td>
+                                    <td><h5>Crossfit</h5>Adam Phillips</td>
                                 </tr>
                                 <tr>
                                     <th class="bg-secondary text-white align-middle">7:00pm - 9:00pm</th>
@@ -715,6 +600,8 @@ actualizarCarrito();
                                     <td><h5>Cardio</h5>John Deo</td>
                                     <td></td>
                                     <td><h5>Crossfit</h5>Adam Phillips</td>
+                                    <td></td>
+                                    <td class="bg-primary text-white"><h5 class="text-white">Powerlifting</h5>James Alien</td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -724,10 +611,10 @@ actualizarCarrito();
             </div>
         </div>
     </div>
-    <!-- Fin sección Horario de Clases -->
+    <!-- Class Timetable End -->
 
 
-    <!-- Inicio sección Cálculo de IMC -->
+    <!-- BMI Calculation Start -->
     <div class="container-fluid position-relative bmi my-5">
         <div class="container">
             <div class="row px-3 align-items-center">
@@ -735,7 +622,7 @@ actualizarCarrito();
                     <div class="pr-md-3 d-none d-md-block">
                         <h4 class="text-primary">Índice de Masa Corporal</h4>
                         <h4 class="display-4 text-white font-weight-bold mb-4">¿Qué es el IMC?</h4>
-                        <p class="m-0 text-white">El IMC es una medida que te ayuda a conocer si tu peso es saludable en relación a tu altura. ¡Calcula el tuyo aquí!</p>
+                        <p class="m-0 text-white">El índice de masa corporal (IMC) es una medida que se utiliza para evaluar el peso corporal en relación con la altura. Se calcula dividiendo el peso en kilogramos entre el cuadrado de la altura en metros. El IMC es una herramienta útil para identificar posibles problemas de peso y salud.</p>
                     </div>
                 </div>
                 <div class="col-md-6 bg-secondary py-5">
@@ -744,18 +631,18 @@ actualizarCarrito();
                         <form>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Peso (KG)" id="bmi-peso" name="bmi-peso" autocomplete="off">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Peso (KG)" id="peso" name="peso" autocomplete="off">
                                 </div>
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Altura (CM)" id="bmi-altura" name="bmi-altura" autocomplete="off">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Altura (CM)" id="altura" name="altura" autocomplete="off">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Edad" id="bmi-edad" name="bmi-edad" autocomplete="off">
+                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Edad" id="edad" name="edad" autocomplete="off">
                                 </div>
                                 <div class="col form-group">
-                                    <select class="custom-select custom-select-lg bg-dark text-muted" id="bmi-genero" name="bmi-genero">
+                                    <select class="custom-select custom-select-lg bg-dark text-muted" id="genero" name="genero">
                                         <option>Género</option>
                                         <option>Masculino</option>
                                         <option>Femenino</option>
@@ -764,46 +651,22 @@ actualizarCarrito();
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <input type="button" class="btn btn-lg btn-block btn-dark border-light" value="Calcular Ahora" onclick="calcularIMC()">
+                                    <input type="button" class="btn btn-lg btn-block btn-dark border-light" value="Calcular Ahora" id="calcular-btn" name="calcular-btn">
                                 </div>
                             </div>
                         </form>
-                        <div id="bmi-resultado" class="mt-4 text-center font-weight-bold" style="font-size:1.2rem;"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Fin sección Cálculo de IMC -->
-    <script>
-    // Función para calcular el Índice de Masa Corporal (IMC)
-    function calcularIMC() {
-        var peso = parseFloat(document.getElementById('bmi-peso').value.replace(',', '.'));
-        var altura = parseFloat(document.getElementById('bmi-altura').value.replace(',', '.'));
-        var edad = parseInt(document.getElementById('bmi-edad').value);
-        var genero = document.getElementById('bmi-genero').value;
-        var resultado = document.getElementById('bmi-resultado');
-        if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
-            resultado.innerHTML = '<span style="color:#FFD700">Por favor, introduce peso y altura válidos.</span>';
-            return;
-        }
-        var alturaM = altura / 100;
-        var imc = peso / (alturaM * alturaM);
-        var categoria = '';
-        if (imc < 18.5) categoria = 'Bajo peso';
-        else if (imc < 25) categoria = 'Normal';
-        else if (imc < 30) categoria = 'Sobrepeso';
-        else categoria = 'Obesidad';
-        resultado.innerHTML = 'Tu IMC es <span style="color:#FFD700">' + imc.toFixed(1) + '</span> (' + categoria + ')';
-    }
-    </script>
+    <!-- BMI Calculation End -->
 
-
-    <!-- Inicio sección Equipo -->
+    <!-- Team Start -->
     <div class="container pt-5 team">
         <div class="d-flex flex-column text-center mb-5">
             <h4 class="text-primary font-weight-bold">Nuestros Entrenadores</h4>
-            <h4 class="display-4 font-weight-bold">Conoce a Nuestros Expertos</h4>
+            <h4 class="display-4 font-weight-bold" style="color:#181818;">Conoce a Nuestros Expertos</h4>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -816,8 +679,8 @@ actualizarCarrito();
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Nombre Entrenador</h4>
-                        <p class="card-text">Entrenador</p>
+                        <h4 class="card-title text-primary">José Gutierrez (El Negro) </h4>
+                        <p class="card-text">Entrenador personal</p>
                     </div>
                 </div>
             </div>
@@ -831,8 +694,8 @@ actualizarCarrito();
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Nombre Entrenador</h4>
-                        <p class="card-text">Entrenador</p>
+                        <h4 class="card-title text-primary">Merlin Gutierrez (Smerlin)</h4>
+                        <p class="card-text">Entrenador personal</p>
                     </div>
                 </div>
             </div>
@@ -846,8 +709,8 @@ actualizarCarrito();
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Nombre Entrenador</h4>
-                        <p class="card-text">Entrenador</p>
+                        <h4 class="card-title text-primary">Nataly Almonte</h4>
+                        <p class="card-text">Entrenadora personal</p>
                     </div>
                 </div>
             </div>
@@ -861,17 +724,16 @@ actualizarCarrito();
                         <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="card-body bg-secondary">
-                        <h4 class="card-title text-primary">Nombre Entrenador</h4>
-                        <p class="card-text">Entrenador</p>
+                        <h4 class="card-title text-primary">Alexander Collado (Popito)</h4>
+                        <p class="card-text">Entrenador de planta general</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Fin sección Equipo -->
+    <!-- Team End -->
 
-
-    <!-- Inicio sección Testimonios -->
+    <!-- Testimonial Start -->
     <div class="container-fluid position-relative testimonial my-5">
         <div class="container">
             <div class="row px-3 align-items-center">
@@ -888,8 +750,8 @@ actualizarCarrito();
                                     <div class="d-flex align-items-center mb-4 text-white">
                                         <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-1.jpg" alt="Imagen">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Welinton Cabrera</h4>
-                                            <p class="m-0">Estudiante</p>
+                                            <h4 class="text-primary">Welinton Cabrera </h4>
+                                            <p class="m-0">Ingeniero</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
@@ -900,8 +762,8 @@ actualizarCarrito();
                                     <div class="d-flex align-items-center mb-4 text-white">
                                         <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-2.jpg" alt="Imagen">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Nombre Cliente</h4>
-                                            <p class="m-0">Profesión</p>
+                                            <h4 class="text-primary">Wilson Cabrera</h4>
+                                            <p class="m-0">estudiate</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
@@ -912,8 +774,8 @@ actualizarCarrito();
                                     <div class="d-flex align-items-center mb-4 text-white">
                                         <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-3.jpg" alt="Imagen">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Nombre Cliente</h4>
-                                            <p class="m-0">Profesión</p>
+                                            <h4 class="text-primary">Juan José</h4>
+                                            <p class="m-0">estudiate</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
@@ -934,14 +796,14 @@ actualizarCarrito();
             </div>
         </div>
     </div>
-    <!-- Fin sección Testimonios -->
+    <!-- Testimonial End -->
 
 
-    <!-- Inicio sección Blog -->
+    <!-- Blog Start -->
     <div class="container pt-5">
         <div class="d-flex flex-column text-center mb-5">
             <h4 class="text-primary font-weight-bold">Nuestro Blog</h4>
-            <h4 class="display-4 font-weight-bold">Últimos Artículos del Blog</h4>
+            <h4 class="display-4 font-weight-bold" style="color:#181818;">Últimos Artículos del Blog</h4>
         </div>
         <div class="row">
             <div class="col-lg-6 mb-5 blog-item">
@@ -953,7 +815,7 @@ actualizarCarrito();
                         <small>2045</small>
                     </div>
                     <div class="pl-3">
-                        <h3 class="font-weight-bold">Consejos para una Vida Saludable</h3>
+                        <h3 class="font-weight-bold" style="color:#181818;">Consejos para una Vida Saludable</h3>
                         <div class="d-flex">
                             <small class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</small>
                             <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Fitness</small>
@@ -961,7 +823,7 @@ actualizarCarrito();
                         </div>
                     </div>
                 </div>
-                <p>Descubre cómo mejorar tu salud y bienestar con nuestros consejos y rutinas recomendadas por expertos.</p>
+                <p style="color:#181818; font-size:1.08rem;">Descubre cómo mejorar tu salud y bienestar con nuestros consejos y rutinas recomendadas por expertos.</p>
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Leer Más <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="col-lg-6 mb-5 blog-item">
@@ -973,27 +835,27 @@ actualizarCarrito();
                         <small>2045</small>
                     </div>
                     <div class="pl-3">
-                        <h3 class="font-weight-bold">Alimentación y Nutrición</h3>
+                        <h3 class="font-weight-bold" style="color:#181818;" >Alimentación y Nutrición</h3>
                         <div class="d-flex">
-                            <small class="mr-2 text-muted"><i class="fa fa-user"></i> Administrador</small>
+                            <small class="mr-2 text-muted"><i class="fa fa-user"></i> Admin</small>
                             <small class="mr-2 text-muted"><i class="fa fa-folder"></i> Nutrición</small>
                             <small class="mr-2 text-muted"><i class="fa fa-comments"></i> 15 Comentarios</small>
                         </div>
                     </div>
                 </div>
-                <p>Aprende a llevar una dieta equilibrada y cómo la nutrición impacta en tu rendimiento físico.</p>
+                <p style="color:#181818; font-size:1.08rem;">Aprende a llevar una dieta equilibrada y cómo la nutrición impacta en tu rendimiento físico.</p>
                 <a class="btn btn-outline-primary mt-2 px-3" href="">Leer Más <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     </div>
-    <!-- Fin sección Blog -->
+    <!-- Blog End -->
 
 
-    <!-- Inicio del pie de página -->
+    <!-- Footer Start -->
     <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Contáctanos</h4>
+                <h4 class="text-primary mb-4">Ponte en contacto</h4>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>Frente a la Policlínica Barrio Lindo, Laguna Salada, Valverde Mao, República Dominicana</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+1 829-377-9331</p>
                 <p><i class="fa fa-envelope mr-2"></i>black84gym@gmail.com</p>
@@ -1004,58 +866,64 @@ actualizarCarrito();
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Enlaces Rápidos</h4>
+                <h4 class="text-primary mb-4">Enlaces rápidos</h4>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Clases</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                    <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Enlaces Populares</h4>
+                <h4 class="text-primary mb-4">Enlaces populares</h4>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Clases</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contacto</a>
+                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                    <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-primary mb-4">Horario de Apertura</h4>
+            <h4 class="text-primary mb-4">Horario de Apertura</h4>
                 <h5 class="text-white">Lunes - Viernes</h5>
                 <p>5:00 AM - 10:30 AM<br>3:00 PM - 8:30 PM</p>
                 <h5 class="text-white">Sábado - Domingo</h5>
                 <p>CERRADO</p>
+            <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+            </div>
             </div>
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-white font-weight-bold" href="#">Black Gym</a>. Todos los derechos reservados. Diseñado por ING.Welinton Cabrera
-                <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                <a class="text-white font-weight-bold" href="https://marketingdigitalwc04.blogspot.com/?m=1">Mi proyectos</a>
             </p>
         </div>
     </div>
-    <!-- Fin del pie de página -->
+    <!-- Footer End -->
 
 
-    <!-- Botón para volver arriba -->
+    <!-- Back to Top -->
     <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-    <!-- Librerías JavaScript -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
 
-    <!-- Archivo JavaScript para el formulario de contacto -->
+    <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
 
-    <!-- JavaScript de la plantilla -->
+    <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
 

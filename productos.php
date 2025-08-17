@@ -1,37 +1,49 @@
 <?php
-// Lee todos los archivos de la carpeta productos y genera un JSON para el frontend
-function buscarProductosEn($ruta, $categoria) {
-    $productos = [];
-    if (!is_dir($ruta)) return $productos;
-    $archivos = scandir($ruta);
-    foreach ($archivos as $archivo) {
-        if ($archivo === '.' || $archivo === '..') continue;
-        $ext = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
-        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) continue;
-        $nombre = ucwords(str_replace(['-', '_', '.jpg', '.jpeg', '.png', '.webp'], [' ', ' ', '', '', '', ''], $archivo));
-        // Convertir la ruta absoluta a relativa para el frontend
-        $rutaRelativa = str_replace(__DIR__, '', $ruta);
-        $rutaRelativa = ltrim($rutaRelativa, '/');
-        $productos[] = [
-            'nombre' => $nombre,
-            'img' => 'img/productos' . ($categoria !== 'otros' ? '/' . $categoria : '') . '/' . $archivo,
-            'descripcion' => 'Descripción pendiente',
-            'precio' => 'RD$ 0',
-            'categoria' => $categoria
-        ];
-    }
-    return $productos;
-}
+// productos.php - Devuelve productos de ejemplo en formato JSON sin base de datos
+header('Content-Type: application/json; charset=utf-8');
 
-$base = __DIR__ . '/img/productos';
-$productos = [];
-$productos = array_merge(
-    buscarProductosEn($base . '/proteina', 'proteina'),
-    buscarProductosEn($base . '/ropa', 'ropa'),
-    buscarProductosEn($base . '/pastilla', 'pastilla')
-);
-// También buscar productos sueltos en la raíz de productos
-$productos = array_merge($productos, buscarProductosEn($base, 'otros'));
-usort($productos, function($a, $b) { return strcmp($a['nombre'], $b['nombre']); });
-header('Content-Type: application/json');
-echo json_encode($productos);
+$productos = [
+    [
+        "id" => 1,
+        "nombre" => "Creatina Monohidrato 400g",
+        "descripcion" => "Creatina pura para mejorar fuerza y rendimiento.",
+        "precio" => "RD$ 1,200",
+        "categoria" => "proteina",
+        "img" => "img/productos/proteina/Creatina Monohidrato 400 g (80 Porciones).webp"
+    ],
+    [
+        "id" => 2,
+        "nombre" => "Camiseta deportiva para hombre",
+        "descripcion" => "Material transpirable y cómodo para tus entrenamientos.",
+        "precio" => "RD$ 650",
+        "categoria" => "ropa",
+        "img" => "img/productos/ropa/Camiseta deportiva para hombre.webp"
+    ],
+    [
+        "id" => 3,
+        "nombre" => "Universal Nutrition Animal Pak",
+        "descripcion" => "Complejo vitamínico para atletas de alto rendimiento.",
+        "precio" => "RD$ 1,800",
+        "categoria" => "vitaminas",
+        "img" => "img/productos/Vitaminas/Universal Nutrition, Animal Pak (44 paquetes).webp"
+    ],
+    [
+        "id" => 4,
+        "nombre" => "Whey Gold Standard 100% Protein",
+        "descripcion" => "Proteína de alta calidad para recuperación muscular.",
+        "precio" => "RD$ 2,200",
+        "categoria" => "proteina",
+        "img" => "img/productos/proteina/Whey Gold Standard 100% Protein Optimum Nutrition ON.webp"
+    ],
+    [
+        "id" => 5,
+        "nombre" => "Leggings deportivos Mujer gris",
+        "descripcion" => "Leggings cómodos y flexibles para entrenamiento.",
+        "precio" => "RD$ 900",
+        "categoria" => "ropa",
+        "img" => "img/productos/ropa/Leggings deportivos Mujer gris.webp"
+    ]
+];
+
+echo json_encode($productos, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+?>

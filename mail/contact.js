@@ -15,7 +15,7 @@ $(function () {
             $this.prop("disabled", true);
 
             $.ajax({
-                url: "contact.php",
+                // url: "contact.php", // Eliminar para GitHub Pages
                 type: "POST",
                 data: {
                     name: name,

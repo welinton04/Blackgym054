@@ -11,8 +11,8 @@
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.4.0 para iconos modernos (incluye TikTok) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <!-- Flaticon Font -->
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
@@ -22,6 +22,35 @@
 </head>
 
 <body class="bg-white">
+    <style>
+        /* Estilos personalizados para la tienda */
+        .product-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            color: #e74c3c;
+        }
+    </style>
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3" style="align-items:center;">
@@ -30,7 +59,9 @@
                     <img src="img/blackgym-logo.jpg" alt="Black Gym Logo" style="height:62px;width:auto;margin-right:18px;vertical-align:middle;box-shadow:0 2px 12px #FFD70055;border-radius:12px;background:#fff;">
                     <span style="vertical-align:middle;display:inline-block;"><h1 class="m-0 display-4 font-weight-bold text-uppercase text-white" style="display:inline-block;letter-spacing:2px;">BLACK GYM</h1></span>
                 </div>
-            </a>
+                <!-- Redes sociales en el header -->
+                <div class="d-flex align-items-center ml-4" style="gap:10px;">
+                </div>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,10 +72,9 @@
                     <a href="tienda.html" class="nav-item nav-link active" onclick="window.location.href='tienda.html'; return false;">Tienda</a>
                     <a href="class.html" class="nav-item nav-link">Clases</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Más</a>
                         <div class="dropdown-menu text-capitalize">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="single.html" class="dropdown-item">Blog Detail</a>
+                            <a href="blog.html" class="dropdown-item">Blog</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contacto</a>
@@ -54,6 +84,55 @@
     </div>
     <!-- Navbar End -->
 
+                    <!-- Modal Carrito -->
+                    <div class="modal fade" id="modal-carrito" tabindex="-1" role="dialog" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content" style="border-radius:18px;box-shadow:0 8px 32px #FFD70033;">
+                                <div class="modal-header" style="background:#181818;color:#FFD700;border-radius:18px 18px 0 0;">
+                                    <h5 class="modal-title font-weight-bold" id="modalCarritoLabel">Tu Carrito de Compra</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" style="color:#FFD700;font-size:2rem;">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="background:#fffbe8;color:#181818;">
+                                    <div id="carrito-lista-productos" class="mb-4"></div>
+                                    <div class="card mb-4" style="border-radius:14px;box-shadow:0 2px 12px #FFD70022;">
+                                        <div class="card-body">
+                                            <h5 class="font-weight-bold mb-3" style="color:#181818;">Datos del cliente</h5>
+                                            <form id="form-datos-cliente">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="nombre-cliente">Nombre completo</label>
+                                                        <input type="text" class="form-control" id="nombre-cliente" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="telefono-cliente">Teléfono de contacto</label>
+                                                        <input type="text" class="form-control" id="telefono-cliente" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-8">
+                                                        <label for="direccion-cliente">Dirección de entrega</label>
+                                                        <input type="text" class="form-control" id="direccion-cliente" required>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="nota-cliente">Nota</label>
+                                                        <textarea class="form-control" id="nota-cliente" rows="2" placeholder=" Entregar a discucion con el cliente"></textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div id="carrito-resumen" class="font-weight-bold" style="font-size:1.18rem;color:#27ae60;"></div>
+                                        <button id="btn-finalizar-pedido" class="btn btn-success" style="font-size:1.15rem;padding:0.7rem 2rem;border-radius:14px;background:#25D366;color:#fff;font-weight:bold;box-shadow:0 2px 12px #25D36655;">
+                                            Enviar pedido profesional por WhatsApp
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5">
@@ -62,7 +141,7 @@
             <div class="d-inline-flex">
                 <p class="m-0 text-white"><a class="text-white" href="">Inicio</a></p>
                 <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">Nuestras características</p>
+                <p class="m-0 text-white">Productos</p>
             </div>
         </div>
     </div>
@@ -70,76 +149,111 @@
 
 
     <!-- Tienda profesional Start -->
-    <!-- Carrito profesional fijo abajo derecha -->
-    <div id="carrito-flotante" style="position:fixed;bottom:32px;right:32px;z-index:9999;">
-        <button id="btn-carrito" style="background:#181818;border-radius:50%;width:62px;height:62px;box-shadow:0 6px 24px #FFD70055;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:box-shadow 0.3s;">
-            <i class="fa fa-shopping-cart" style="font-size:2.3rem;color:#FFD700;"></i>
-            <span id="carrito-cantidad" style="position:absolute;top:7px;right:7px;background:#FFD700;color:#181818;font-weight:bold;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:1.08rem;box-shadow:0 2px 8px #FFD70099;">0</span>
-        </button>
-    </div>
-    <!-- Panel flotante del carrito -->
-    <div id="panel-carrito" style="display:none;position:fixed;bottom:100px;right:32px;width:370px;max-width:98vw;background:#fffbe8;border-radius:22px;box-shadow:0 12px 48px #FFD70055;padding:1.6rem 1.2rem 1.2rem 1.2rem;z-index:9998;animation:fadeInCarrito 0.5s;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-            <h4 style="color:#181818;font-weight:bold;margin:0;font-size:1.35rem;">Mi Carrito</h4>
-            <button id="cerrar-carrito" style="background:#FFD700;color:#181818;border-radius:50%;width:32px;height:32px;font-weight:bold;border:none;font-size:1.2rem;box-shadow:0 2px 8px #FFD70099;">&times;</button>
-        </div>
-        <div id="carrito-lista" style="max-height:320px;overflow-y:auto;margin-bottom:1rem;"></div>
-        <div id="carrito-total" style="color:#181818;font-weight:bold;font-size:1.15rem;text-align:right;margin-bottom:0.7rem;"></div>
-        <div style="display:flex;gap:0.7rem;justify-content:flex-end;">
-            <button id="pagar-paypal" style="background:#0070ba;color:#fff;border-radius:8px;padding:0.5rem 1.2rem;font-weight:bold;border:none;display:flex;align-items:center;gap:0.5rem;"><i class="fab fa-paypal"></i>PayPal</button>
-            <button id="pagar-tarjeta" style="background:#FFD700;color:#181818;border-radius:8px;padding:0.5rem 1.2rem;font-weight:bold;border:none;display:flex;align-items:center;gap:0.5rem;"><i class="fa fa-credit-card"></i>Tarjeta</button>
-        </div>
-        <button id="vaciar-carrito" style="background:#181818;color:#FFD700;border-radius:8px;padding:0.5rem 1.2rem;font-weight:bold;border:none;float:right;margin-top:1rem;">Vaciar carrito</button>
-    </div>
-    <style>
-    @keyframes fadeInCarrito { from { opacity:0; transform:translateY(40px);} to { opacity:1; transform:translateY(0);} }
-    #carrito-flotante button:hover { box-shadow:0 12px 48px #FFD70099; }
-    #panel-carrito::-webkit-scrollbar { width: 8px; background: #FFD70022; }
-    #panel-carrito::-webkit-scrollbar-thumb { background: #FFD70099; border-radius: 8px; }
-    #panel-carrito { font-family: 'Montserrat', Arial, sans-serif; }
-    #carrito-lista div { transition: box-shadow 0.2s, transform 0.2s; }
-    #carrito-lista div:hover { box-shadow:0 4px 16px #FFD70055; transform:scale(1.03); }
-    #carrito-total { border-top:1px solid #FFD70055; padding-top:0.5rem; margin-top:0.5rem; }
-    #vaciar-carrito { transition: background 0.2s, color 0.2s; }
-    #vaciar-carrito:hover { background:#FFD700; color:#181818; }
-    /* Mejoras visuales para las tarjetas de productos */
-    .producto-card { border:2px solid #FFD70022; transition:box-shadow 0.2s, transform 0.2s; }
-    .producto-card:hover { box-shadow:0 8px 32px #FFD70055; transform:scale(1.04); border-color:#FFD70099; }
-    .producto-card .card-title { font-size:1.25rem; letter-spacing:1px; }
-    .producto-card .card-text { font-size:1.08rem; color:#444; margin-bottom:0.7rem; }
-    .producto-card .badge-success { background:#FFD700; color:#181818; font-weight:bold; }
-    .producto-card .agregar-carrito { background:#181818; color:#FFD700; font-weight:bold; border-radius:8px; transition:background 0.2s, color 0.2s, transform 0.2s; }
-    .producto-card .agregar-carrito:hover { background:#FFD700; color:#181818; transform:scale(1.07); }
-    /* Animación para productos nuevos */
-    @keyframes fadeInProducto { from { opacity:0; transform:scale(0.95);} to { opacity:1; transform:scale(1);} }
-    .producto-card { animation:fadeInProducto 0.7s; }
-    </style>
-    <!-- Tienda Start -->
     <div class="container tienda my-5">
         <div class="d-flex flex-column text-center mb-5">
-            <h4 class="text-primary font-weight-bold">Tienda</h4>
-            <h4 class="display-4 font-weight-bold">Productos para tu entrenamiento</h4>
-            <p class="mb-3" style="font-size:1.18rem; color:#181818;">Encuentra suplementos, ropa deportiva y accesorios para potenciar tu experiencia en el gimnasio.</p>
+            <h4 class="text-primary font-weight-bold" style="font-size:2.1rem;letter-spacing:1px;margin-bottom:0.7rem;text-shadow:0 2px 12px #FFD70099;">Tienda</h4>
+            <h2 class="display-4 font-weight-bold" style="color:#181818;letter-spacing:2px;text-shadow:0 2px 12px #FFD70099,0 0px 0px #fff;">Productos para tu entrenamiento</h2>
+            <p class="mb-3" style="font-size:1.28rem; color:#181818; background:linear-gradient(90deg,#FFD70022 0%,#fffbe8 100%); border-radius:16px; padding:1rem 1.7rem; box-shadow:0 4px 24px #FFD70033; display:inline-block; margin-top:0.7rem; border:2px solid #FFD70099; font-weight:500; letter-spacing:1px; animation:fadeInTitulo 1.2s;">Encuentra suplementos, ropa deportiva, vitaminas y accesorios para potenciar tu experiencia en el gimnasio.</p>
+        </div>
+        <!-- Buscador y iconos rápidos -->
+        <div class="row mb-4 align-items-center justify-content-between" style="gap:18px;">
+            <div class="col-lg-6 col-md-8 col-12 mb-2">
+                <input type="text" id="buscador-tienda" class="form-control" placeholder="Buscar producto, SKU o categoría..." style="border-radius:14px;font-size:1.13rem;padding:0.8rem 1.2rem;border:2px solid #FFD700;background:#fffbe8;color:#181818;box-shadow:0 2px 12px #FFD70022;">
+                <div id="autocompletar-tienda" style="position:relative;z-index:10;"></div>
+            </div>
+            <div class="col-lg-6 col-md-4 col-12 d-flex justify-content-end" style="gap:18px;">
+                <button id="icono-carrito" class="btn" style="background:#181818;color:#FFD700;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #FFD70055;position:relative;">
+                    <i class="fa fa-shopping-cart" style="font-size:1.5rem;"></i>
+                    <span id="contador-carrito" style="position:absolute;top:4px;right:4px;background:#FFD700;color:#181818;font-weight:bold;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:0.98rem;box-shadow:0 2px 8px #FFD70099;">0</span>
+                </button>
+                <button id="icono-favoritos" class="btn" style="background:#FFD700;color:#181818;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #FFD70055;">
+                    <i class="fa fa-heart"></i>
+                </button>
+                <button id="icono-perfil" class="btn" style="background:#fffbe8;color:#181818;border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #FFD70055;">
+                    <i class="fa fa-user"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Filtros y orden profesional -->
+        <div class="row mb-4">
+            <div class="col-12 d-flex flex-wrap gap-2 justify-content-center" id="filtros-tienda">
+                <!-- Filtros dinámicos aquí -->
+                <button class="btn btn-filtro-categoria active" data-cat="todos" style="background:#FFD700;color:#181818;font-weight:bold;border-radius:12px;box-shadow:0 2px 8px #FFD70033;">Todos</button>
+                <button class="btn btn-filtro-categoria" data-cat="proteina" style="background:#fffbe8;color:#FFD700;font-weight:bold;border-radius:12px;box-shadow:0 2px 8px #FFD70033;">Proteínas</button>
+                <button class="btn btn-filtro-categoria" data-cat="ropa" style="background:#fffbe8;color:#FFD700;font-weight:bold;border-radius:12px;box-shadow:0 2px 8px #FFD70033;">Ropa</button>
+                <button class="btn btn-filtro-categoria" data-cat="pastilla" style="background:#fffbe8;color:#FFD700;font-weight:bold;border-radius:12px;box-shadow:0 2px 8px #FFD70033;">Vitaminas</button>
+                <!-- Filtros avanzados -->
+                <select id="filtro-precio" class="form-control mx-2" style="width:140px;border-radius:12px;border:2px solid #FFD700;background:#fffbe8;color:#181818;font-weight:bold;">
+                    <option value="">Precio</option>
+                    <option value="-1000">Menos de RD$1,000</option>
+                    <option value="1000-3000">RD$1,000 - RD$3,000</option>
+                    <option value="3000-">Más de RD$3,000</option>
+                </select>
+                <select id="filtro-talla" class="form-control mx-2" style="width:110px;border-radius:12px;border:2px solid #FFD700;background:#fffbe8;color:#181818;font-weight:bold;">
+                    <option value="">Talla</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <select id="filtro-color" class="form-control mx-2" style="width:110px;border-radius:12px;border:2px solid #FFD700;background:#fffbe8;color:#181818;font-weight:bold;">
+                    <option value="">Color</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Blanco">Blanco</option>
+                    <option value="Rojo">Rojo</option>
+                    <option value="Azul">Azul</option>
+                </select>
+                <select id="filtro-marca" class="form-control mx-2" style="width:120px;border-radius:12px;border:2px solid #FFD700;background:#fffbe8;color:#181818;font-weight:bold;">
+                    <option value="">Marca</option>
+                    <option value="Nike">Nike</option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="ON">ON</option>
+                    <option value="Mass">Mass</option>
+                </select>
+                <select id="filtro-stock" class="form-control mx-2" style="width:120px;border-radius:12px;border:2px solid #FFD700;background:#fffbe8;color:#181818;font-weight:bold;">
+                    <option value="">Stock</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="agotado">Agotado</option>
+                </select>
+                <select id="filtro-promo" class="form-control mx-2" style="width:120px;border-radius:12px;border:2px solid #FFD700;background:#fffbe8;color:#181818;font-weight:bold;">
+                    <option value="">Promos</option>
+                    <option value="oferta">Oferta</option>
+                    <option value="nuevo">Nuevo</option>
+                </select>
+            </div>
         </div>
         <div class="row" id="panel-productos">
-            <!-- Filtro profesional por categoría visual -->
-            <div class="col-12 mb-4 d-flex justify-content-center">
-                <div style="width:100%;max-width:520px;display:flex;gap:18px;justify-content:center;">
-                    <button class="btn btn-filtro-categoria active" data-cat="todos" style="background:#FFD700;color:#181818;font-weight:bold;border-radius:12px;padding:0.7rem 1.3rem;border:none;box-shadow:0 2px 8px #FFD70033;display:flex;align-items:center;gap:8px;font-size:1.09rem;"><i class="fa fa-th-large"></i> Todos</button>
-                    <button class="btn btn-filtro-categoria" data-cat="proteina" style="background:#fffbe8;color:#FFD700;font-weight:bold;border-radius:12px;padding:0.7rem 1.3rem;border:2px solid #FFD700;box-shadow:0 2px 8px #FFD70033;display:flex;align-items:center;gap:8px;font-size:1.09rem;"><i class="fa fa-dumbbell"></i> Proteína</button>
-                    <button class="btn btn-filtro-categoria" data-cat="ropa" style="background:#e8f7ff;color:#0070ba;font-weight:bold;border-radius:12px;padding:0.7rem 1.3rem;border:2px solid #0070ba;box-shadow:0 2px 8px #0070ba33;display:flex;align-items:center;gap:8px;font-size:1.09rem;"><i class="fa fa-tshirt"></i> Ropa</button>
-                    <button class="btn btn-filtro-categoria" data-cat="pastilla" style="background:#f8e8ff;color:#a700ba;font-weight:bold;border-radius:12px;padding:0.7rem 1.3rem;border:2px solid #a700ba;box-shadow:0 2px 8px #a700ba33;display:flex;align-items:center;gap:8px;font-size:1.09rem;"><i class="fa fa-capsules"></i> Pastilla</button>
-                </div>
+            <!-- Grid profesional de productos -->
+        </div>
+        <div class="row mt-4 mb-5 justify-content-center">
+            <!-- Botón eliminado, solo se puede finalizar pedido desde el carrito -->
+        </div>
+        <!-- Modal de detalle de producto -->
+        <div class="modal fade" id="modal-detalle-producto" tabindex="-1" role="dialog" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius:18px;box-shadow:0 8px 32px #FFD70033;">
+              <div class="modal-header" style="background:#181818;color:#FFD700;border-radius:18px 18px 0 0;">
+                <h5 class="modal-title font-weight-bold" id="modalDetalleLabel">Detalle del Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar" style="color:#FFD700;font-size:2rem;">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="modal-detalle-body" style="background:#fffbe8;color:#181818;">
+                <!-- Detalle dinámico aquí -->
+              </div>
+              <div class="modal-footer" style="background:#181818;border-radius:0 0 18px 18px;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              </div>
             </div>
-            <!-- Panel de productos dinámico -->
-            <!-- Los productos se renderizan aquí por JS -->
+          </div>
+        </div>
         </div>
     </div>
+    <script src="js/tienda-dinamica.js"></script>
     <!-- Tienda profesional End -->
 
-
     <!-- Testimonial Start -->
-    <div class="container-fluid position-relative testimonial mt-5" style="margin-bottom: 90px;">
+    <div class="container-fluid position-relative testimonial my-5">
         <div class="container">
             <div class="row px-3 align-items-center">
                 <div class="col-md-6 bg-secondary">
@@ -153,44 +267,38 @@
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-1.jpg"
-                                            alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-1.jpg" alt="Imagen">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Client Name</h4>
-                                            <p class="m-0">Profession</p>
+                                            <h4 class="text-primary">Nombre Cliente</h4>
+                                            <p class="m-0">Profesión</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Sed ea amet kasd elitr stet nonumy, stet rebum et ipsum est duo elitr eirmod clita
-                                        lorem. Dolores tempor voluptua ipsum sanctus clita
+                                        "Excelente atención y resultados. Recomiendo este gimnasio a todos los que buscan un cambio real."
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-2.jpg"
-                                            alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-2.jpg" alt="Imagen">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">Client Name</h4>
-                                            <p class="m-0">Profession</p>
+                                            <h4 class="text-primary">Nombre Cliente</h4>
+                                            <p class="m-0">Profesión</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        Sed ea amet kasd elitr stet nonumy, stet rebum et ipsum est duo elitr eirmod clita
-                                        lorem. Dolores tempor voluptua ipsum sanctus clita
+                                        "Las instalaciones son de primera y el ambiente es muy motivador. ¡Me encanta entrenar aquí!"
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="d-flex align-items-center mb-4 text-white">
-                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-3.jpg"
-                                            alt="Image">
+                                        <img width="80" height="80" class="rounded-circle bg-dark p-2" src="img/testimonial-3.jpg" alt="Imagen">
                                         <div class="pl-4">
-                                            <h4 class="text-primary">wilson</h4>
-                                            <p class="m-0">Cliente</p>
+                                            <h4 class="text-primary">Nombre Cliente</h4>
+                                            <p class="m-0">Profesión</p>
                                         </div>
                                     </div>
                                     <div class="testimonial-text position-relative border bg-dark text-white mb-5 p-4">
-                                        En Black Gym encontré disciplina y motivación. 
-                                        Cada entrenamiento es un paso más hacia mis metas.
+                                        "Gracias a los entrenadores logré mis objetivos más rápido de lo que imaginaba. ¡Muy recomendado!"
                                     </div>
                                 </div>
                             </div>
@@ -201,9 +309,7 @@
                     <div class="pl-md-3 d-none d-md-block">
                         <h4 class="text-primary">Testimonios</h4>
                         <h4 class="display-4 mb-4 text-white font-weight-bold">¿Qué Dicen Nuestros Clientes?</h4>
-                        <p class="m-0 text-white">"Black Gym me motivó a superarme cada día. 
-                            Los entrenadores son increíbles y los resultados, visibles desde el primer mes."
-                        </p>
+                        <p class="m-0 text-white">Historias reales de transformación y éxito en nuestro gimnasio.</p>
                     </div>
                 </div>
             </div>
@@ -211,158 +317,7 @@
     </div>
     <!-- Testimonial End -->
 
-
     <!-- Footer Start -->
-<script>
-// Carrito profesional mejorado y todo en español
-let carrito = [];
-let productos = [];
-function cargarProductos() {
-    fetch('productos.php')
-        .then(res => res.json())
-        .then(data => {
-            productos = data;
-            mostrarProductos();
-        });
-}
-function mostrarProductos() {
-    const panel = document.getElementById('panel-productos');
-    // Mantener el filtro arriba
-    const filtro = document.querySelector('.col-12.mb-4');
-    panel.innerHTML = '';
-    if (filtro) panel.appendChild(filtro);
-    // Obtener categoría seleccionada
-    let categoria = 'todos';
-    const btnActivo = document.querySelector('.btn-filtro-categoria.active');
-    if (btnActivo) categoria = btnActivo.getAttribute('data-cat');
-    let filtrados = productos.filter(prod => {
-        if (categoria === 'todos') return true;
-        if (categoria === 'proteina') return prod.categoria && prod.categoria.toLowerCase().includes('proteina');
-        if (categoria === 'ropa') return prod.categoria && prod.categoria.toLowerCase().includes('ropa');
-        if (categoria === 'pastilla') return prod.categoria && prod.categoria.toLowerCase().includes('pastilla');
-        return true;
-    });
-    if (filtrados.length === 0) {
-        panel.innerHTML += `<div class='col-12 text-center'><p style='color:#888;font-size:1.15rem;'>No hay productos en esta categoría.</p></div>`;
-    }
-    filtrados.forEach(prod => {
-        panel.innerHTML += `
-        <div class="col-md-4 mb-4 d-flex justify-content-center">
-            <div class="card shadow-sm producto-card" style="max-width:340px; border-radius:18px;">
-                <img src="${prod.img}" alt="${prod.nombre}" class="card-img-top" style="height:220px; object-fit:contain; border-radius:18px 18px 0 0; background:#f8f8f8; display:block; margin:auto; box-shadow:0 2px 12px #FFD70033;">
-                <div class="card-body text-center">
-                    <h5 class="card-title font-weight-bold" style="color:#FFD700;">${prod.nombre}</h5>
-                    <div class="card-text" style="color:#181818;white-space:normal;word-break:break-word;max-height:110px;overflow:auto;text-align:left;font-size:1.09rem;padding:0.5rem 0.2rem 0.7rem 0.2rem;background:#fffbe8;border-radius:8px;margin-bottom:0.7rem;">${prod.descripcion}</div>
-                    <span class="badge badge-success" style="font-size:1.1rem;">${prod.precio}</span>
-                    <button class="btn btn-dark mt-3 agregar-carrito" style="color:#FFD700; border-radius:8px;">Agregar al carrito</button>
-                </div>
-            </div>
-        </div>
-        `;
-    });
-    activarBotonesCarrito();
-    // Animación de entrada para los productos
-    document.querySelectorAll('.producto-card').forEach(card => {
-        card.style.opacity = '0';
-        setTimeout(() => { card.style.opacity = '1'; }, 100);
-    });
-    // Evento para los botones de filtro
-    document.querySelectorAll('.btn-filtro-categoria').forEach(btn => {
-        btn.onclick = function() {
-            document.querySelectorAll('.btn-filtro-categoria').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            mostrarProductos();
-        }
-    });
-}
-function activarBotonesCarrito() {
-    document.querySelectorAll('.producto-card .agregar-carrito').forEach(btn => {
-        btn.onclick = function() {
-            const card = btn.closest('.producto-card');
-            const nombre = card.querySelector('.card-title').textContent.trim();
-            const precio = card.querySelector('.badge-success').textContent.trim();
-            const img = card.querySelector('img').getAttribute('src');
-            const descripcion = card.querySelector('.card-text').textContent.trim();
-            agregarAlCarrito(nombre, precio, img, descripcion);
-            // Animación visual profesional
-            btn.textContent = '¡Agregado!';
-            btn.style.background = '#FFD700';
-            btn.style.color = '#181818';
-            btn.style.transform = 'scale(1.08)';
-            setTimeout(() => {
-                btn.textContent = 'Agregar al carrito';
-                btn.style.background = '';
-                btn.style.color = '#FFD700';
-                btn.style.transform = '';
-            }, 1200);
-        }
-    });
-}
-function actualizarCarrito() {
-    const lista = document.getElementById('carrito-lista');
-    const cantidad = document.getElementById('carrito-cantidad');
-    const total = document.getElementById('carrito-total');
-    lista.innerHTML = '';
-    let suma = 0;
-    if (carrito.length === 0) {
-        lista.innerHTML = '<p style="color:#181818;text-align:center;">Tu carrito está vacío.</p>';
-        total.textContent = '';
-    } else {
-        carrito.forEach((prod, idx) => {
-            let precioNum = parseInt(prod.precio.replace(/[^\d]/g, ''));
-            suma += precioNum;
-            lista.innerHTML += `<div style='display:flex;align-items:center;justify-content:space-between;margin-bottom:0.7rem;background:#fff;border-radius:12px;padding:0.7rem 0.9rem;box-shadow:0 2px 8px #FFD70022;'>
-                <img src='${prod.img}' alt='${prod.nombre}' style='width:54px;height:54px;object-fit:contain;border-radius:10px;background:#f8f8f8;margin-right:0.9rem;'>
-                <div style='flex:1;'>
-                    <span style='font-weight:bold;color:#FFD700;font-size:1.08rem;'>${prod.nombre}</span><br>
-                    <span style='color:#181818;font-size:1.05rem;'>${prod.precio}</span><br>
-                    <span style='color:#888;font-size:0.98rem;'>${prod.descripcion ? prod.descripcion : ''}</span>
-                </div>
-                <button onclick='eliminarDelCarrito(${idx})' style='background:#FFD700;color:#181818;border:none;border-radius:8px;padding:0.4rem 0.9rem;font-weight:bold;cursor:pointer;box-shadow:0 2px 8px #FFD70099;'>Eliminar</button>
-            </div>`;
-        });
-        total.textContent = 'Total: RD$ ' + suma.toLocaleString('es-DO');
-    }
-    cantidad.textContent = carrito.length;
-}
-function agregarAlCarrito(nombre, precio, img, descripcion) {
-    carrito.push({nombre, precio, img, descripcion});
-    actualizarCarrito();
-    // Animación flotante al agregar producto
-    const btnCarrito = document.getElementById('btn-carrito');
-    btnCarrito.style.boxShadow = '0 0 0 8px #FFD70088';
-    setTimeout(() => { btnCarrito.style.boxShadow = ''; }, 600);
-}
-function eliminarDelCarrito(idx) {
-    carrito.splice(idx, 1);
-    actualizarCarrito();
-}
-document.getElementById('btn-carrito').onclick = function() {
-    document.getElementById('panel-carrito').style.display = 'block';
-}
-document.getElementById('cerrar-carrito').onclick = function() {
-    document.getElementById('panel-carrito').style.display = 'none';
-}
-document.getElementById('vaciar-carrito').onclick = function() {
-    if (carrito.length === 0) {
-        alert('El carrito ya está vacío.');
-    } else {
-        if (confirm('¿Seguro que quieres vaciar el carrito?')) {
-            carrito = [];
-            actualizarCarrito();
-        }
-    }
-}
-// Botones de pago (solo visual)
-document.getElementById('pagar-paypal').onclick = function() {
-    alert('Simulación de pago con PayPal. (La integración real requiere backend)');
-}
-document.getElementById('pagar-tarjeta').onclick = function() {
-    alert('Simulación de pago con tarjeta de crédito. (La integración real requiere backend)');
-}
-cargarProductos();
-actualizarCarrito();
-</script>
     <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -371,10 +326,9 @@ actualizarCarrito();
                 <p><i class="fa fa-phone-alt mr-2"></i>+1 829-377-9331</p>
                 <p><i class="fa fa-envelope mr-2"></i>black84gym@gmail.com</p>
                 <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook Black Gym"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="https://www.instagram.com/blackgym84?igsh=a3FmMHVlcXFvcWE=" target="_blank" rel="noopener noreferrer" title="Instagram Black Gym"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="https://www.tiktok.com/@gimnasioelnegro?_t=ZS-8ygItBzKSCj&_r=1" target="_blank" rel="noopener noreferrer" title="TikTok Black Gym"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -385,6 +339,8 @@ actualizarCarrito();
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Clases</a>
                     <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                    <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -395,6 +351,8 @@ actualizarCarrito();
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
                     <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Clases</a>
                     <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                    <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -403,12 +361,14 @@ actualizarCarrito();
                 <p>5:00 AM - 10:30 AM<br>3:00 PM - 8:30 PM</p>
                 <h5 class="text-white">Sábado - Domingo</h5>
                 <p>CERRADO</p>
+            <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+            </div>
             </div>
         </div>
         <div class="container border-top border-dark pt-5">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-white font-weight-bold" href="#">Black Gym</a>. Todos los derechos reservados. Diseñado por ING.Welinton Cabrera
-                <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                <a class="text-white font-weight-bold" href="https://marketingdigitalwc04.blogspot.com/?m=1">Mi proyectos</a>
             </p>
         </div>
     </div>
