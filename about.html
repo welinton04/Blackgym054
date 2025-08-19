@@ -2,6 +2,14 @@
 <html lang="es">
 
 <head>
+        <style>
+        .icono-feature-grande, .icono-feature-grande:before {
+            font-size: 6rem !important;
+            width: 6rem !important;
+            height: 6rem !important;
+            line-height: 1.1 !important;
+        }
+        </style>
     <meta charset="utf-8">
     <title>BLACK GYM - Transforma tu cuerpo, transforma tu vida</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -79,17 +87,20 @@
                 <p style="color:#181818; font-size:1.08rem;">Contamos con tres años de experiencia ayudando a nuestros clientes a alcanzar sus metas de salud y bienestar.</p>
                 <div class="row py-2">
                     <div class="col-sm-6">
-                        <i class="flaticon-barbell display-2 text-primary"></i>
+                        <i class="flaticon-barbell text-primary icono-feature-grande" style="margin-left: -18px;"></i>
                         <h4 class="font-weight-bold" style="color:#FFD700;">Centro GYM Certificado</h4>
                         <p style="color:#181818; font-size:1.08rem;">Instalaciones modernas y personal calificado para tu seguridad y comodidad.</p>
                     </div>
                     <div class="col-sm-6">
-                        <i class="flaticon-medal display-2 text-primary"></i>
+                        <i class="flaticon-medal text-primary icono-feature-grande" style="margin-left: -18px;"></i>
                         <h4 class="font-weight-bold" style="color:#FFD700;">Premios y Reconocimientos</h4>
                         <p style="color:#181818; font-size:1.08rem;">Reconocidos por la excelencia en el servicio y resultados de nuestros clientes.</p>
                     </div>
                 </div>
-                <a href="" class="btn btn-lg px-4 btn-outline-primary">Saber Más</a>
+                                <span id="saberMasTexto1" style="display:none; color:#181818; font-size:1.08rem; margin-top:10px;">
+                                    Nuestro gimnasio cuenta con más de 10 años de experiencia, programas exclusivos, asesoría personalizada y un ambiente motivador para que logres tus objetivos. ¡Descubre todo lo que tenemos para ti!
+                                </span>
+                                <a href="javascript:void(0);" class="btn btn-lg px-4 btn-outline-primary" id="btnSaberMas1" onclick="toggleSaberMas(1)">Saber Más</a>
             </div>
         </div>
     </div>
@@ -97,6 +108,19 @@
 
 
     <!-- Tienda Panel (copiado de about.html, sin botón de carrito) -->
+        <script>
+        function toggleSaberMas(num) {
+            var texto = document.getElementById("saberMasTexto" + num);
+            var btn = document.getElementById("btnSaberMas" + num);
+            if (texto.style.display === "none" || texto.style.display === "") {
+                texto.style.display = "block";
+                btn.innerHTML = 'Saber Menos';
+            } else {
+                texto.style.display = "none";
+                btn.innerHTML = 'Saber Más';
+            }
+        }
+        </script>
     <div class="container tienda my-5" id="tienda">
         <div class="d-flex flex-column text-center mb-5">
             <h4 class="text-primary font-weight-bold" style="font-size:2.1rem;letter-spacing:1px;margin-bottom:0.7rem;text-shadow:0 2px 12px #FFD70099;">Tienda</h4>
@@ -329,7 +353,7 @@
     <!-- Team End -->
 
 
-<!-- Toda la lógica de productos y carrito está en js/tienda-dinamica.js -->
+    <!-- Footer Start -->
     <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -346,11 +370,11 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Enlaces rápidos</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Clases</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+                    <a class="text-white mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
+                    <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Clases</a>
+                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
                     <div class="d-flex justify-content-start mt-3" style="gap:10px;">
                     </div>
                 </div>
@@ -358,11 +382,11 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h4 class="text-primary mb-4">Enlaces populares</h4>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
-                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Clases</a>
-                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                    <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                    <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+                    <a class="text-white mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
+                    <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Clases</a>
+                    <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
                     <div class="d-flex justify-content-start mt-3" style="gap:10px;">
                     </div>
                 </div>

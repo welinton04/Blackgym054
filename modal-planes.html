@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>BLACK GYM - Clases</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Plantilla Web Gratis" name="keywords">
+    <meta content="Plantilla Web Gratis" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Font Awesome 6.4.0 para iconos modernos (incluye TikTok) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <style>
+.btn-anim-nutricion {
+  transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s, opacity 0.18s;
+}
+.btn-anim-nutricion.anim-hover {
+  transform: scale(1.07);
+  box-shadow: 0 8px 24px 0 #ffc10777;
+  opacity: 0.97;
+}
+</style>
+</head>
+<body class="bg-white">
+        <!-- Modal Solicitud Plan -->
+        <div class="modal fade" id="modalSolicitudPlan" tabindex="-1" role="dialog" aria-labelledby="modalSolicitudPlanLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="modalSolicitudPlanLabel">Solicitar <span id="nombrePlanModal"></span></h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-3">¿Cómo prefieres recibir la información?</p>
+                        <div class="d-flex justify-content-center mb-4" style="gap: 20px;">
+                            <button class="btn btn-success" id="btnWhatsapp"><i class="fab fa-whatsapp mr-2"></i>WhatsApp</button>
+                            <button class="btn btn-info" id="btnCorreo"><i class="fa fa-envelope mr-2"></i>Correo</button>
+                        </div>
+                        <form id="formContacto" style="display:none;">
+                            <div class="form-group">
+                                <label for="nombreUsuario">Nombre</label>
+                                <input type="text" class="form-control" id="nombreUsuario" required>
+                            </div>
+                            <div class="form-group" id="grupoCorreo" style="display:none;">
+                                <label for="correoUsuario">Correo electrónico</label>
+                                <input type="email" class="form-control" id="correoUsuario" required>
+                            </div>
+                            <div class="form-group" id="grupoWhatsapp" style="display:none;">
+                                <label for="whatsappUsuario">Número de WhatsApp</label>
+                                <input type="tel" class="form-control" id="whatsappUsuario" required pattern="[0-9\+ ]{8,15}">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mt-3">Enviar Solicitud</button>
+                        </form>
+                        <div id="mensajeEnviado" class="alert alert-success mt-3" style="display:none;">¡Solicitud enviada correctamente!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Inicio de la barra de navegación -->
+    <div class="container-fluid p-0 nav-bar">
+        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+            <a href="index.html" class="navbar-brand d-flex align-items-center">
+                <img src="img/blackgym-logo.jpg" alt="Logo Gimnasio" style="height: 60px;" class="m-0 p-0 mr-2">
+                <span class="ml-2 h1 m-0 font-weight-bold text-uppercase text-white" style="letter-spacing:2px;">BLACK GYM</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto p-4 bg-secondary">
+                    <a href="index.html" class="nav-item nav-link">Inicio</a>
+                    <a href="about.html" class="nav-item nav-link">Sobre Nosotros</a>
+                    <a href="tienda.html" class="nav-item nav-link">Tienda</a>
+                    <a href="class.html" class="nav-item nav-link">Clases</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
+                        <div class="dropdown-menu text-capitalize">
+                            <a href="blog.html" class="dropdown-item">Blog</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Fin de la barra de navegación -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h4 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase font-weight-bold">Planes y Membresías</h4>
+            <div class="d-inline-flex">
+                <p class="m-0 text-white"><a class="text-white" href="index.html">Inicio</a></p>
+                <p class="m-0 text-white px-2">/</p>
+                <p class="m-0 text-white">Planes y Membresías</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <div class="container py-5">
+        <h1 class="display-4 font-weight-bold text-center mb-4" style="color:#181818;">Planes y Membresías Black Gym</h1>
+        <p class="lead text-center mb-5" style="color:#181818; font-size:1.08rem;">Elige el plan que mejor se adapte a tus objetivos. ¡Transforma tu cuerpo y tu vida con nosotros!</p>
+        <div class="row text-center">
+            <!-- Membresía General -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-primary shadow">
+                    <div class="card-body">
+                        <i class="fas fa-dumbbell fa-2x text-primary mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Membresía Básica</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Acceso ilimitado al gimnasio</li>
+                            <li>Rutinas estándar</li>
+                            <li>Horarios flexibles</li>
+                        </ul>
+                        <h4 class="text-primary font-weight-bold mb-3">$25/mes</h4>
+                        <a href="#" class="btn btn-primary btn-block btn-solicitar" data-plan="Membresía Básica">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Membresía Premium -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-success shadow">
+                    <div class="card-body">
+                        <i class="fas fa-crown fa-2x text-success mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Membresía Premium</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Todo lo de la Básica</li>
+                            <li>Clases grupales ilimitadas</li>
+                            <li>Evaluación física mensual</li>
+                            <li>Descuentos en tienda</li>
+                        </ul>
+                        <h4 class="text-success font-weight-bold mb-3">$40/mes</h4>
+                        <a href="#" class="btn btn-success btn-block btn-solicitar" data-plan="Membresía Premium">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Membresía Elite -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-warning shadow">
+                    <div class="card-body">
+                        <i class="fas fa-star fa-2x text-warning mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Membresía Elite</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Todo lo de la Premium</li>
+                            <li>Entrenador personal</li>
+                            <li>Nutricionista</li>
+                            <li>Acceso VIP y eventos exclusivos</li>
+                        </ul>
+                        <h4 class="text-warning font-weight-bold mb-3">$60/mes</h4>
+                        <a href="#" class="btn btn-warning btn-block text-white btn-solicitar" data-plan="Membresía Elite">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="font-weight-bold text-center mt-5 mb-4" style="color:#181818;">Planes Especializados</h2>
+        <div class="row text-center">
+            <!-- Plan Culturismo -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-danger shadow">
+                    <div class="card-body">
+                        <i class="fas fa-bolt fa-2x text-danger mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Culturismo Pro</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Entrenamiento avanzado</li>
+                            <li>Rutinas personalizadas</li>
+                            <li>Seguimiento semanal</li>
+                            <li>Zona de pesas exclusiva</li>
+                        </ul>
+                        <h4 class="text-danger font-weight-bold mb-3">$50/mes</h4>
+                        <a href="#" class="btn btn-danger btn-block btn-solicitar" data-plan="Culturismo Pro">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plan Desarrollo Muscular -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-info shadow">
+                    <div class="card-body">
+                        <i class="fas fa-fire fa-2x text-info mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Muscular Plus</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Rutinas de hipertrofia</li>
+                            <li>Evaluación física mensual</li>
+                            <li>Acceso a clases grupales</li>
+                        </ul>
+                        <h4 class="text-info font-weight-bold mb-3">$35/mes</h4>
+                        <a href="#" class="btn btn-info btn-block text-white btn-solicitar" data-plan="Muscular Plus">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 class="font-weight-bold text-center mt-5 mb-4" style="color:#181818;">Nutrición y Dieta</h2>
+        <div class="row text-center">
+            <!-- Plan Nutrición Básica -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-secondary shadow">
+                    <div class="card-body">
+                        <i class="fas fa-apple-alt fa-2x text-secondary mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Nutrición Básica</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Plan alimenticio personalizado</li>
+                            <li>Seguimiento mensual</li>
+                            <li>Consejos de suplementación</li>
+                        </ul>
+                        <h4 class="font-weight-bold mb-3" style="color: #ffc107;">$30/mes</h4>
+                        <a href="#" class="btn btn-secondary btn-block text-white btn-solicitar" data-plan="Nutrición Básica" id="btn-nutricion-basica">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plan Nutrición Premium -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-dark shadow">
+                    <div class="card-body">
+                        <i class="fas fa-seedling fa-2x text-dark mb-3"></i>
+                        <h5 class="card-title font-weight-bold">Nutrición Premium</h5>
+                        <ul class="list-unstyled mb-3">
+                            <li>Todo lo de Nutrición Básica</li>
+                            <li>Consultas ilimitadas con nutricionista</li>
+                            <li>Plan de dieta para objetivos específicos</li>
+                        </ul>
+                        <h4 class="font-weight-bold mb-3" style="color: #ffc107;">$50/mes</h4>
+                        <a href="#" class="btn btn-dark btn-block text-white btn-solicitar" data-plan="Nutrición Premium" id="btn-nutricion-premium">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <!-- Footer Start -->
+            <div class="footer container-fluid mt-5 py-5 px-sm-3 px-md-5 text-white">
+                <div class="row pt-5">
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <h4 class="text-primary mb-4">Ponte en contacto</h4>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Frente a la Policlínica Barrio Lindo, Laguna Salada, Valverde Mao, República Dominicana</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+1 829-377-9331</p>
+                        <p><i class="fa fa-envelope mr-2"></i>black84gym@gmail.com</p>
+                        <div class="d-flex justify-content-start mt-4">
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook Black Gym"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="https://www.instagram.com/blackgym84?igsh=a3FmMHVlcXFvcWE=" target="_blank" rel="noopener noreferrer" title="Instagram Black Gym"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 40px; height: 40px;" href="https://www.tiktok.com/@gimnasioelnegro?_t=ZS-8ygItBzKSCj&_r=1" target="_blank" rel="noopener noreferrer" title="TikTok Black Gym"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <h4 class="text-primary mb-4">Enlaces rápidos</h4>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+                            <a class="text-white mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
+                            <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Clases</a>
+                            <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                            <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <h4 class="text-primary mb-4">Enlaces populares</h4>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>Sobre Nosotros</a>
+                            <a class="text-white mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Tienda</a>
+                            <a class="text-white mb-2" href="class.html"><i class="fa fa-angle-right mr-2"></i>Clases</a>
+                            <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
+                            <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5">
+                    <h4 class="text-primary mb-4">Horario de Apertura</h4>
+                        <h5 class="text-white">Lunes - Viernes</h5>
+                        <p>5:00 AM - 10:30 AM<br>3:00 PM - 8:30 PM</p>
+                        <h5 class="text-white">Sábado - Domingo</h5>
+                        <p>CERRADO</p>
+                    <div class="d-flex justify-content-start mt-3" style="gap:10px;">
+                    </div>
+                    </div>
+                </div>
+                <div class="container border-top border-dark pt-5">
+                    <p class="m-0 text-center text-white">
+                        &copy; <a class="text-white font-weight-bold" href="#">Black Gym</a>. Todos los derechos reservados. Diseñado por ING.Welinton Cabrera
+                        <a class="text-white font-weight-bold" href="https://marketingdigitalwc04.blogspot.com/?m=1">Mi proyectos</a>
+                    </p>
+                </div>
+            </div>
+            <!-- Footer End -->
+
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/waypoints/waypoints.min.js"></script>
+
+            <!-- Contact Javascript File -->
+            <script src="mail/jqBootstrapValidation.min.js"></script>
+            <script src="mail/contact.js"></script>
+
+            <!-- Template Javascript -->
+            <script src="js/main.js"></script>
+
+                <script>
+                // Modal y lógica de solicitud profesional
+                let tipoEnvio = null;
+                let planSeleccionado = '';
+                document.querySelectorAll('.btn-solicitar').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        planSeleccionado = this.getAttribute('data-plan');
+                        document.getElementById('nombrePlanModal').textContent = planSeleccionado;
+                        document.getElementById('formContacto').style.display = 'none';
+                        document.getElementById('mensajeEnviado').style.display = 'none';
+                        tipoEnvio = null;
+                        $('#modalSolicitudPlan').modal('show');
+                    });
+                });
+                document.getElementById('btnWhatsapp').onclick = function() {
+                    tipoEnvio = 'whatsapp';
+                    document.getElementById('formContacto').style.display = 'block';
+                    document.getElementById('grupoWhatsapp').style.display = 'block';
+                    document.getElementById('grupoCorreo').style.display = 'none';
+                };
+                document.getElementById('btnCorreo').onclick = function() {
+                    tipoEnvio = 'correo';
+                    document.getElementById('formContacto').style.display = 'block';
+                    document.getElementById('grupoWhatsapp').style.display = 'none';
+                    document.getElementById('grupoCorreo').style.display = 'block';
+                };
+                document.getElementById('formContacto').onsubmit = function(e) {
+                    e.preventDefault();
+                    const nombre = document.getElementById('nombreUsuario').value;
+                    if(tipoEnvio === 'whatsapp') {
+                        const tel = document.getElementById('whatsappUsuario').value.replace(/[^0-9]/g, '');
+                        const mensaje = encodeURIComponent(`Hola, soy ${nombre} y estoy interesado(a) en el plan: ${planSeleccionado}. ¿Podrían enviarme más información?`);
+                        window.open(`https://wa.me/${tel}?text=${mensaje}`,'_blank');
+                    } else if(tipoEnvio === 'correo') {
+                        const correo = document.getElementById('correoUsuario').value;
+                        const asunto = encodeURIComponent(`Solicitud de información: ${planSeleccionado}`);
+                        const cuerpo = encodeURIComponent(`Hola, soy ${nombre} y estoy interesado(a) en el plan: ${planSeleccionado}. ¿Podrían enviarme más información?`);
+                        window.location.href = `mailto:${correo}?subject=${asunto}&body=${cuerpo}`;
+                    }
+                    document.getElementById('formContacto').style.display = 'none';
+                    document.getElementById('mensajeEnviado').style.display = 'block';
+                    setTimeout(()=>{$('#modalSolicitudPlan').modal('hide');}, 2000);
+                };
+                </script>
+
+                <script>
+// Animación profesional JS para los botones de Nutrición Básica y Premium
+(function(){
+  function animarBoton(id) {
+    var btn = document.querySelector(id);
+    if (!btn) return;
+    btn.style.transition = 'transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.18s';
+    function addAnim() {
+      btn.style.transform = 'scale(1.07)';
+      btn.style.boxShadow = '0 8px 24px 0 #ffc10777';
+      btn.style.opacity = '0.97';
+    }
+    function removeAnim() {
+      btn.style.transform = '';
+      btn.style.boxShadow = '';
+      btn.style.opacity = '';
+    }
+    btn.addEventListener('mouseenter', addAnim);
+    btn.addEventListener('mouseleave', removeAnim);
+    btn.addEventListener('touchstart', addAnim);
+    btn.addEventListener('touchend', removeAnim);
+  }
+  animarBoton('a[data-plan="Nutrición Básica"]');
+  animarBoton('a[data-plan="Nutrición Premium"]');
+})();
+</script>
+
+</body>
+        <!-- </html> -->

@@ -44,5 +44,40 @@
             }, 1200);
         });
     });
+
+    // Suscripción al boletín
+    $(document).ready(function () {
+        $(".subscribe form").on("submit", function (e) {
+            e.preventDefault();
+            var email = $("#newsletter-email").val();
+            var msgBox = $("#newsletter-msg");
+            msgBox.html("");
+            if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                msgBox.html('<span style="color:#ff4d4f;">Por favor ingresa un correo válido.</span>');
+                return;
+            }
+            $("#newsletter-btn").prop("disabled", true).text("Enviando...");
+            $.ajax({
+                url: "subscribe.php",
+                method: "POST",
+                data: { email: email },
+                dataType: "json",
+                success: function (resp) {
+                    if (resp.success) {
+                        msgBox.html('<span style="color:#28a745;">' + resp.message + '</span>');
+                        $(".subscribe form")[0].reset();
+                    } else {
+                        msgBox.html('<span style="color:#ff4d4f;">' + resp.message + '</span>');
+                    }
+                },
+                error: function () {
+                    msgBox.html('<span style="color:#ff4d4f;">Error de conexión. Intenta más tarde.</span>');
+                },
+                complete: function () {
+                    $("#newsletter-btn").prop("disabled", false).text("Suscribirse");
+                }
+            });
+        });
+    });
 })(jQuery);
 
