@@ -719,31 +719,55 @@
                     <div class="py-5 px-3">
                         <h1 class="mb-4 text-white">Calcula tu IMC</h1>
                         <form>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Peso (KG)" id="peso" name="peso" autocomplete="off">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Altura (CM)" id="altura" name="altura" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Edad" id="edad" name="edad" autocomplete="off">
-                                </div>
-                                <div class="col form-group">
-                                    <select class="custom-select custom-select-lg bg-dark text-muted" id="genero" name="genero">
-                                        <option>Género</option>
-                                        <option>Masculino</option>
-                                        <option>Femenino</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="button" class="btn btn-lg btn-block btn-dark border-light" value="Calcular Ahora" id="calcular-btn" name="calcular-btn">
-                                </div>
-                            </div>
+                        <div class="form-row">
+                        <div class="col form-group">
+                        <div class="input-group">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Peso" id="peso" name="peso" min="1" step="any" autocomplete="off">
+                        <select id="peso-unidad" class="custom-select custom-select-lg bg-dark text-muted" style="max-width:90px;">
+                        <option value="kg">kg</option>
+                        <option value="lb">lb</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col form-group">
+                        <div class="bmi-altura-wrapper" style="min-height:68px;">
+                        <div class="input-group" style="width:100%;">
+                        <div id="altura-input-cm" style="flex: 1 1 0%;">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Altura" id="altura" name="altura" min="1" step="any" autocomplete="off">
+                        </div>
+                        <div id="altura-input-ftin" style="display:none; flex: 1 1 0%; gap:4px;">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" id="altura-feetdec" placeholder="Estatura (pies.pulgadas)" min="0" step="any">
+                        </div>
+                        <select id="altura-unidad" class="custom-select custom-select-lg bg-dark text-muted" style="max-width:90px;">
+                        <option value="cm">cm</option>
+                        <option value="ftin">pies+in</option>
+                        </select>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="col form-group">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Edad" id="edad" name="edad" min="1" max="120" autocomplete="off">
+                        </div>
+                        <div class="col form-group">
+                        <select class="custom-select custom-select-lg bg-dark text-muted" id="genero" name="genero">
+                        <option>Género</option>
+                        <option>Masculino</option>
+                        <option>Femenino</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="col">
+                        <input type="button" class="btn btn-lg btn-block btn-dark border-light" value="Calcular Ahora" id="calcular-btn" name="calcular-btn">
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="col">
+                        <div id="bmi-resultado" style="margin-top:18px; color:#fff; font-weight:bold; font-size:1.22rem;"></div>
+                        </div>
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -1047,6 +1071,64 @@
                 btn.innerHTML = 'Leer Más <i class="fa fa-angle-right"></i>';
             }
         }
+        
+        // --- Lógica IMC extendida ---
+        document.addEventListener('DOMContentLoaded', function(){
+            // Mantener todo a mismo alto y sin distorsiones
+            document.getElementById('altura-unidad').addEventListener('change', function(){
+                if(this.value === 'ftin') {
+                    document.getElementById('altura-input-cm').style.display = 'none';
+                    document.getElementById('altura-input-ftin').style.display = 'flex';
+                    document.getElementById('altura').value = '';
+                } else {
+                    document.getElementById('altura-input-cm').style.display = 'block';
+                    document.getElementById('altura-input-ftin').style.display = 'none';
+                    document.getElementById('altura-feetdec').value = '';
+                }
+            });
+
+            // Lógica cálculo
+            document.getElementById('calcular-btn').addEventListener('click', function(){
+                var peso = parseFloat(document.getElementById('peso').value);
+                var pesoUnidad = document.getElementById('peso-unidad').value;
+                var alturaUnidad = document.getElementById('altura-unidad').value;
+                var altura; // en metros
+
+                // Peso a kg
+                if(pesoUnidad === 'lb') {
+                    peso = peso * 0.453592;
+                }
+
+                // Altura a metros
+                if(alturaUnidad === 'cm') {
+                    altura = parseFloat(document.getElementById('altura').value)/100.0;
+                } else { // pies+pulgadas como decimal
+                    var feetDec = parseFloat(document.getElementById('altura-feetdec').value) || 0;
+                    var pies = Math.floor(feetDec);
+                    var pulgadas = (feetDec - pies) * 12;
+                    var totalPulgadas = pies*12 + pulgadas;
+                    altura = totalPulgadas * 0.0254;
+                }
+
+                // Prevención y Cálculo
+                if(!peso || !altura || peso<=0 || altura<=0){
+                    document.getElementById('bmi-resultado').innerHTML = "Por favor, ingrese datos válidos.";
+                    return;
+                }
+                var imc = peso/(altura*altura);
+                imc = Math.round(imc*100)/100;
+
+                // Rango
+                let descripcion = '';
+                if(imc < 18.5) descripcion = 'Bajo peso';
+                else if(imc < 25) descripcion = 'Peso normal';
+                else if(imc < 30) descripcion = 'Sobrepeso';
+                else descripcion = 'Obesidad';
+
+                document.getElementById('bmi-resultado').innerHTML =
+                    `Tu IMC es <b>${imc}</b> (${descripcion})`;
+            });
+        });
         </script>
 
 <script>

@@ -449,31 +449,55 @@
                     <div class="py-5 px-3">
                         <h1 class="mb-4 text-white">Calcula tu IMC</h1>
                         <form>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Peso (KG)" id="peso" name="peso" autocomplete="off">
-                                </div>
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Altura (CM)" id="altura" name="altura" autocomplete="off">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col form-group">
-                                    <input type="text" class="form-control form-control-lg bg-dark text-white" placeholder="Edad" id="edad" name="edad" autocomplete="off">
-                                </div>
-                                <div class="col form-group">
-                                    <select class="custom-select custom-select-lg bg-dark text-muted" id="genero" name="genero">
-                                        <option>Género</option>
-                                        <option>Masculino</option>
-                                        <option>Femenino</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="button" class="btn btn-lg btn-block btn-dark border-light" value="Calcular Ahora" id="calcular-btn" name="calcular-btn">
-                                </div>
-                            </div>
+                        <div class="form-row">
+                        <div class="col form-group">
+                        <div class="input-group">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Peso" id="peso" name="peso" min="1" step="any" autocomplete="off">
+                        <select id="peso-unidad" class="custom-select custom-select-lg bg-dark text-muted" style="max-width:90px;">
+                        <option value="kg">kg</option>
+                        <option value="lb">lb</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="col form-group">
+                        <div class="bmi-altura-wrapper" style="min-height:68px;">
+                        <div class="input-group" style="width:100%;">
+                        <div id="altura-input-cm" style="flex: 1 1 0%;">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Altura" id="altura" name="altura" min="1" step="any" autocomplete="off">
+                        </div>
+                        <div id="altura-input-ftin" style="display:none; flex: 1 1 0%; gap:4px;">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" id="altura-feetdec" placeholder="Estatura (pies.pulgadas)" min="0" step="any">
+                        </div>
+                        <select id="altura-unidad" class="custom-select custom-select-lg bg-dark text-muted" style="max-width:90px;">
+                        <option value="cm">cm</option>
+                        <option value="ftin">pies+in</option>
+                        </select>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="col form-group">
+                        <input type="number" class="form-control form-control-lg bg-dark text-white" placeholder="Edad" id="edad" name="edad" min="1" max="120" autocomplete="off">
+                        </div>
+                        <div class="col form-group">
+                        <select class="custom-select custom-select-lg bg-dark text-muted" id="genero" name="genero">
+                        <option>Género</option>
+                        <option>Masculino</option>
+                        <option>Femenino</option>
+                        </select>
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="col">
+                        <input type="button" class="btn btn-lg btn-block btn-dark border-light" value="Calcular Ahora" id="calcular-btn" name="calcular-btn">
+                        </div>
+                        </div>
+                        <div class="form-row">
+                        <div class="col">
+                        <div id="bmi-resultado" style="margin-top:18px; color:#fff; font-weight:bold; font-size:1.22rem;"></div>
+                        </div>
+                        </div>
                         </form>
                     </div>
                 </div>
